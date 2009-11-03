@@ -5,7 +5,7 @@
     <title>{% block title %}{% endblock %} - Djortunes</title>
   </head>
   <body>
-    <h1>Fortunes</h1>
+    <h1><a href="{% url fortunes-index %}">Fortunes</a></h1>
     {% block content %}{% endblock %}
   </body>
 </html>

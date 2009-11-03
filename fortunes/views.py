@@ -13,12 +13,12 @@ def detail(request, fortune_id):
         commentForm = PublicCommentForm(request.POST, instance = comment)
         if commentForm.is_valid():
             comment = commentForm.save()
-            return redirect(reverse('fortune-detail', args=[fortune.id]), '#c_', comment.id)
+            return redirect(reverse('fortune-detail', args=[fortune.id]) + '#c_' + str(comment.id))
     else:
         commentForm = PublicCommentForm(instance = comment)
     return render_to_response('detail.html', RequestContext(request, {
-        'fortune': fortune, 
-        'comments': comments, 
+        'fortune':     fortune, 
+        'comments':    comments, 
         'commentForm': commentForm,
     }))
 
@@ -36,7 +36,9 @@ def new(request):
             return redirect(reverse('fortune-detail', args=[fortune.id]))        
     else:
         form = PublicFortuneForm()
-    return render_to_response('new.html', RequestContext(request, {'form': form}))
+    return render_to_response('new.html', RequestContext(request, {
+        'form': form,
+    }))
 
 def vote(request, fortune_id, direction):
     "Votes for a fortune"

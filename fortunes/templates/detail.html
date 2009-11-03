@@ -5,14 +5,14 @@
 {% block content %}
     <h2>
         <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
-        <sup>
-            <a href="{% url fortune-vote fortune.id "down" %}">-</a>
-            ({{ fortune.votes }})
-            <a href="{% url fortune-vote fortune.id "up" %}">+</a>
-        </sup>
     </h2>
     <p>
-        Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago
+        Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago.
+        <span class="vote">
+            <strong>{{ fortune.votes }} votes</strong>
+            <a href="{% url fortune-vote fortune.id "down" %}">-</a> /
+            <a href="{% url fortune-vote fortune.id "up" %}">+</a>
+        </span>
     </p>
     <blockquote>
         {{ fortune.content }}
@@ -21,11 +21,13 @@
     {% if comments %}
     <ul class="fortune-comments">
     {% for comment in comments %}
-        <li>
+        <li id="c_{{ comment.id }}">
             <blockquote>
                 {{ comment.content }}
             </blockquote>
-            <p>Posted by {{ comment.author }} on {{ comment.pub_date|timesince }}</p>
+            <p>
+                Posted by {{ comment.author }} on {{ comment.pub_date|timesince }}
+            </p>
         </li>
     {% endfor %}
     </ul>
@@ -44,7 +46,7 @@
         </table>
     </form>
     <p>
-        Back to <a href="/fortunes/">fortunes list</a> |
+        Back to <a href="{% url fortunes-index %}">fortunes list</a> |
         <a href="{% url fortune-new %}">Add a fortune</a>
     </p>
 {% endblock %}
