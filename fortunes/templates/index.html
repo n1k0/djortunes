@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Fortunes list{% endblock %}
+
+{% block content %}
+{% if fortunes %}
+    <ul>
+    {% for fortune in fortunes %}
+        <li>
+            <h3>
+                <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+            </h3>
+            <p>
+                Posted by {{ fortune.author }}, {{ fortune.pub_date|timesince }} ago
+            </p>
+            <blockquote>
+                {{ fortune.content }}
+            </blockquote>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No fortunes are available.</p>
+{% endif %}
+{% endblock %}

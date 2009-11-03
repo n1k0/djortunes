@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Fortune #{{ fortune.id }}{% endblock %}
+
+{% block content %}
+    <h2>
+        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a> ({{ fortune.votes }})
+    </h2>
+    <p>
+        Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago
+    </p>
+    <blockquote>
+        {{ fortune.content }}
+    </blockquote>
+    <p>
+        Vote <a href="{% url fortune-vote fortune.id "up" %}">up</a> | <a href="{% url fortune-vote fortune.id "down" %}">down</a>
+    </p>
+    {% if comments %}
+    <ul>
+    {% for comment in comments %}
+        <li>
+            <blockquote>
+                {{ comment.content }}
+            </blockquote>
+            <p>Posted by {{ comment.author }} on {{ comment.pub_date }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No comment yet</p>
+    {% endif %}
+    <p>
+        Back to <a href="/fortunes/">fortunes list</a> |
+        <a href="{% url fortune-new %}">Add a fortune</a>
+    </p>
+{% endblock %}

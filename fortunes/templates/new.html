@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Add a fortune{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{% url fortune-new %}">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+            <tr>
+                <td></td>
+                <td><input type="submit"/></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
