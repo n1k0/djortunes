@@ -5,9 +5,9 @@ from djortunes.fortunes.models import Comment, Fortune
 from djortunes.fortunes.forms import PublicCommentForm, PublicFortuneForm
 
 def detail(request, fortune_id):
-    "Display one Fortune details, and provides a comment form"
+    "Display one fortune, and provides a comment form wich will be handled and persisted if request is POST"
     fortune = get_object_or_404(Fortune, id = fortune_id)
-    comments = fortune.comment_set.all()
+    comments = fortune.comment_set.all().order_by('pub_date')
     comment = Comment(fortune = fortune)
     if request.method == "POST":
         commentForm = PublicCommentForm(request.POST, instance = comment)
@@ -28,7 +28,7 @@ def index(request):
     return render_to_response('index.html', {'fortunes': fortunes})
 
 def new(request):
-    "provides a Fortune cration form, validates the form and creates a new Fortune"
+    "Provides a Fortune creation form, validates the form and saves a new Fortune in the database"
     if request.method == "POST":
         form = PublicFortuneForm(request.POST)
         if form.is_valid():

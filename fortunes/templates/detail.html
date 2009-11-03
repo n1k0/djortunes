@@ -26,7 +26,7 @@
                 {{ comment.content }}
             </blockquote>
             <p>
-                Posted by {{ comment.author }} on {{ comment.pub_date|timesince }}
+                Posted by {{ comment.author }} {{ comment.pub_date|timesince }} ago
             </p>
         </li>
     {% endfor %}
