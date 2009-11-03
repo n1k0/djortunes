@@ -4,9 +4,9 @@
 
 {% block content %}
 {% if fortunes %}
-    <ul>
+    <ul class="fortunes">
     {% for fortune in fortunes %}
-        <li>
+        <li class="fortune">
             <h3>
                 <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
             </h3>

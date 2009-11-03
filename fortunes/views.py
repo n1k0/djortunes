@@ -1,14 +1,26 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
-from djortunes.fortunes.models import Fortune
-from djortunes.fortunes.forms import PublicFortuneForm
+from djortunes.fortunes.models import Comment, Fortune
+from djortunes.fortunes.forms import PublicCommentForm, PublicFortuneForm
 
 def detail(request, fortune_id):
-    "Display one Fortune details"
+    "Display one Fortune details, and provides a comment form"
     fortune = get_object_or_404(Fortune, id = fortune_id)
     comments = fortune.comment_set.all()
-    return render_to_response('detail.html', {'fortune': fortune, 'comments': comments})
+    comment = Comment(fortune = fortune)
+    if request.method == "POST":
+        commentForm = PublicCommentForm(request.POST, instance = comment)
+        if commentForm.is_valid():
+            comment = commentForm.save()
+            return redirect(reverse('fortune-detail', args=[fortune.id]), '#c_', comment.id)
+    else:
+        commentForm = PublicCommentForm(instance = comment)
+    return render_to_response('detail.html', RequestContext(request, {
+        'fortune': fortune, 
+        'comments': comments, 
+        'commentForm': commentForm,
+    }))
 
 def index(request):
     "Lists Fortunes"

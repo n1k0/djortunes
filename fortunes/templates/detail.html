@@ -4,7 +4,12 @@
 
 {% block content %}
     <h2>
-        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a> ({{ fortune.votes }})
+        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+        <sup>
+            <a href="{% url fortune-vote fortune.id "down" %}">-</a>
+            ({{ fortune.votes }})
+            <a href="{% url fortune-vote fortune.id "up" %}">+</a>
+        </sup>
     </h2>
     <p>
         Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago
@@ -12,23 +17,32 @@
     <blockquote>
         {{ fortune.content }}
     </blockquote>
-    <p>
-        Vote <a href="{% url fortune-vote fortune.id "up" %}">up</a> | <a href="{% url fortune-vote fortune.id "down" %}">down</a>
-    </p>
+    <h3>Comments</h3>
     {% if comments %}
-    <ul>
+    <ul class="fortune-comments">
     {% for comment in comments %}
         <li>
             <blockquote>
                 {{ comment.content }}
             </blockquote>
-            <p>Posted by {{ comment.author }} on {{ comment.pub_date }}</p>
+            <p>Posted by {{ comment.author }} on {{ comment.pub_date|timesince }}</p>
         </li>
     {% endfor %}
     </ul>
     {% else %}
     <p>No comment yet</p>
     {% endif %}
+    <h3>Add a comment</h3>
+    <form method="POST" action="{% url fortune-detail fortune.id %}">
+        {% csrf_token %}
+        <table>
+            {{ commentForm }}
+            <tr>
+                <td></td>
+                <td><input type="submit"/></td>
+            </tr>
+        </table>
+    </form>
     <p>
         Back to <a href="/fortunes/">fortunes list</a> |
         <a href="{% url fortune-new %}">Add a fortune</a>

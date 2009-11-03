@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)
     title = models.CharField(max_length=200, blank=False)
@@ -10,7 +8,7 @@ class Fortune(models.Model):
     votes = models.IntegerField(default=0)
     
     def __unicode__(self):
-        return "fortune from %s" % (self.author)
+        return "%s, from %s" % (self.title, self.author)
 
 class Comment(models.Model):
     fortune = models.ForeignKey(Fortune, blank=False)
