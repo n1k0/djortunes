@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
@@ -33,7 +34,22 @@ def index(request, ftype):
         order_by = 'votes'
     else:
         order_by = '-pub_date'
-    fortunes = Fortune.objects.all().order_by(order_by)[:10]
+
+    fortune_list = Fortune.objects.all().order_by(order_by)#[:10]
+    paginator = Paginator(fortune_list, 2)
+    
+    # Make sure page request is an int. If not, deliver first page.
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+    
+    # If page request (9999) is out of range, deliver last page of results.
+    try:
+        fortunes = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        fortunes = paginator.page(paginator.num_pages)
+
     return render_to_response('index.html', {'fortunes': fortunes})
 
 def new(request):

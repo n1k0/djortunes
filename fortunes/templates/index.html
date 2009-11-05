@@ -5,7 +5,7 @@
 {% block content %}
 {% if fortunes %}
     <ul class="fortunes">
-    {% for fortune in fortunes %}
+    {% for fortune in fortunes.object_list %}
         <li class="fortune">
             <h3>
                 <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
@@ -23,4 +23,20 @@
 {% else %}
     <p>No fortunes are available.</p>
 {% endif %}
+
+<ul class="pagination">
+    {% if fortunes.has_previous %}
+    <li>
+        <a href="?page={{ fortunes.previous_page_number }}">previous</a>
+    </li>
+    {% endif %}
+    <li>    
+        Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }}.
+    </li>
+    {% if fortunes.has_next %}
+    <li>
+        <a href="?page={{ fortunes.next_page_number }}">next</a>
+    </li>
+    {% endif %}
+</ul>
 {% endblock %}
