@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^fortunes/',  include('djortunes.fortunes.urls')),
+    (r'',  include('djortunes.fortunes.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/',     include(admin.site.urls)),
 )

@@ -5,7 +5,10 @@ from djortunes.fortunes.models import Comment, Fortune
 from djortunes.fortunes.forms import PublicCommentForm, PublicFortuneForm
 
 def detail(request, fortune_id):
-    "Display one fortune, and provides a comment form wich will be handled and persisted if request is POST"
+    """
+    Display one fortune, and provides a comment form wich will be handled and persisted if 
+    request is POST
+    """
     fortune = get_object_or_404(Fortune, id = fortune_id)
     comments = fortune.comment_set.all().order_by('pub_date')
     comment = Comment(fortune = fortune)
@@ -22,9 +25,15 @@ def detail(request, fortune_id):
         'commentForm': commentForm,
     }))
 
-def index(request):
+def index(request, ftype):
     "Lists Fortunes"
-    fortunes = Fortune.objects.all().order_by('-pub_date')[:10]
+    if ftype == 'top':
+        order_by = '-votes'
+    elif ftype == 'worst':
+        order_by = 'votes'
+    else:
+        order_by = '-pub_date'
+    fortunes = Fortune.objects.all().order_by(order_by)[:10]
     return render_to_response('index.html', {'fortunes': fortunes})
 
 def new(request):

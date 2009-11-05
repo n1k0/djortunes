@@ -9,6 +9,7 @@
         <li class="fortune">
             <h3>
                 <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+                <small><sup>{{ fortune.votes }} vote(s)</sup></small>
             </h3>
             <p>
                 Posted by {{ fortune.author }}, {{ fortune.pub_date|timesince }} ago
