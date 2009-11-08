@@ -24,7 +24,7 @@
     <p>No comment yet</p>
     {% endif %}
     <h3>Add a comment</h3>
-    <form method="POST" action="{% url fortune-detail fortune.id %}">
+    <form method="post" action="{% url fortune-detail fortune.id %}">
         {% csrf_token %}
         <table>
             {{ commentForm }}
