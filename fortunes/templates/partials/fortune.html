@@ -1,0 +1,14 @@
+<h2>
+    <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+</h2>
+<p>
+    Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago.
+    <span class="vote">
+        <strong>{{ fortune.votes }} votes</strong>
+        <a href="{% url fortune-vote fortune.id "down" %}">-</a> /
+        <a href="{% url fortune-vote fortune.id "up" %}">+</a>
+    </span>
+</p>
+<blockquote>
+    {{ fortune.content }}
+</blockquote>

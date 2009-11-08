@@ -7,16 +7,9 @@
     <ul class="fortunes">
     {% for fortune in fortunes.object_list %}
         <li class="fortune">
-            <h3>
-                <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
-                <small><sup>{{ fortune.votes }} vote(s)</sup></small>
-            </h3>
-            <p>
-                Posted by {{ fortune.author }}, {{ fortune.pub_date|timesince }} ago
-            </p>
-            <blockquote>
-                {{ fortune.content }}
-            </blockquote>
+        {% with fortune as fortune %}
+            {% include "partials/fortune.html" %}
+        {% endwith %}
         </li>
     {% endfor %}
     </ul>
@@ -24,6 +17,7 @@
     <p>No fortunes are available.</p>
 {% endif %}
 
+{% if fortunes.has_previous or fortunes.has_next %}
 <ul class="pagination">
     {% if fortunes.has_previous %}
     <li>
@@ -39,4 +33,5 @@
     </li>
     {% endif %}
 </ul>
-{% endblock %}
+{% endif %}
+{% endblock content %}

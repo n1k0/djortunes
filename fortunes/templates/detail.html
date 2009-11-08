@@ -3,20 +3,9 @@
 {% block title %}Fortune #{{ fortune.id }}{% endblock %}
 
 {% block content %}
-    <h2>
-        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
-    </h2>
-    <p>
-        Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago.
-        <span class="vote">
-            <strong>{{ fortune.votes }} votes</strong>
-            <a href="{% url fortune-vote fortune.id "down" %}">-</a> /
-            <a href="{% url fortune-vote fortune.id "up" %}">+</a>
-        </span>
-    </p>
-    <blockquote>
-        {{ fortune.content }}
-    </blockquote>
+    {% with fortune as fortune %}
+        {% include "partials/fortune.html" %}
+    {% endwith %}
     <h3>Comments</h3>
     {% if comments %}
     <ul class="fortune-comments">
@@ -49,4 +38,4 @@
         Back to <a href="{% url fortunes-index "" %}">fortunes list</a> |
         <a href="{% url fortune-new %}">Add a fortune</a>
     </p>
-{% endblock %}
+{% endblock content %}

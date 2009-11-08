@@ -13,7 +13,7 @@ class Fortune(models.Model):
 class Comment(models.Model):
     fortune = models.ForeignKey(Fortune, blank=False)
     author = models.CharField(max_length=45, blank=False)
-    content = models.CharField(max_length=500, blank=False)
+    content = models.TextField(blank=False)
     pub_date = models.DateTimeField('date published', auto_now_add=True)
 
     def __unicode__(self):
