@@ -1,3 +1,5 @@
+{% load fortune_extras %}
+
 <h2>
     <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
 </h2>
@@ -10,5 +12,5 @@
     </span>
 </p>
 <blockquote>
-    {{ fortune.content }}
+    {{ fortune.content|fortunize|safe }}
 </blockquote>
