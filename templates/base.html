@@ -2,17 +2,74 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>{% block title %}{% endblock %} - Djortunes</title>
+    <style type="text/css">
+    body {
+        font-size: 18px;
+        width: 960px;
+        margin: 0 auto;
+    }
+    a {
+        color: #000;
+    }
+        a:hover {
+            color: #000;
+        }
+    h1 {
+        text-align: center;
+        padding-bottom: -10px;
+        margin-bottom: 50px;
+    }
+        h1 a {
+            text-decoration: none;
+            font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+            font-size: 70px;
+            font-weight: normal;
+            line-height: 1.5;
+            word-spacing: 0.1em;
+        }
+    #navigation {
+        border-top: 2px solid #000;
+        position: absolute;
+        top: 120px;
+    }
+        #navigation h2 {
+            display: none;
+        }
+        #navigation ul {
+            list-style-type: none;
+            margin: 15px 0 0 0;
+            padding: 0;
+        }
+            #navigation li {
+                float: left;
+                width: 230px;
+                text-align: center;
+                padding-right: 10px;
+            }
+            #navigation li a {
+                font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+                text-decoration: none;
+                font-weight: normal;
+                font-size: 110%;
+            }
+    #main {
+        clear: both;
+    }
+    </style>
   </head>
-  <body>
+  <body id="djortunes">
     <h1>
         <a href="{% url fortunes-index "" %}">Fortunes</a>
     </h1>
     
+    <div id="main">
     {% block content %}{% endblock %}
+    </div>
     
     {% block sidebar %}
-    <div id="sidebar">
+    <div id="navigation">
         {% block navigation %}
         <h2>Navigation</h2>
         <ul>

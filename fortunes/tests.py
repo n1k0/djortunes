@@ -1,23 +1,11 @@
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
-
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
+from djortunes.fortunes.templatetags.fortune_extras import fortunize
 
 __test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
+fortunize() tests:
 
->>> 1 + 1 == 2
-True
+>>> fortunize('<niko> foo')
+u'<dl><dt class="odd">niko</dt><dd><q>foo</q></dd>\n</dl>'
+>>> fortunize(u'<niko> foo\\n<david> bar')
+u'<dl><dt class="odd">niko</dt><dd><q>foo</q></dd>\n<dt class="even">david</dt><dd><q>bar</q></dd>\n</dl>'
 """}
-
