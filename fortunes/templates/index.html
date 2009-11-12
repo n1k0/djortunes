@@ -3,35 +3,35 @@
 {% block title %}Fortunes list{% endblock %}
 
 {% block content %}
+<section id="fortunes">
 {% if fortunes %}
-    <ul class="fortunes">
-    {% for fortune in fortunes.object_list %}
-        <li class="fortune">
-        {% with fortune as fortune %}
-            {% include "partials/fortune.html" %}
-        {% endwith %}
-        </li>
-    {% endfor %}
-    </ul>
+{% for fortune in fortunes.object_list %}
+    {% with fortune as fortune %}
+        {% include "partials/fortune.html" %}
+    {% endwith %}
+{% endfor %}
 {% else %}
-    <p>No fortunes are available.</p>
+    <p>No fortune found mathing your request.</p>
 {% endif %}
+</section>
 
 {% if fortunes.has_previous or fortunes.has_next %}
-<ul class="pagination">
-    {% if fortunes.has_previous %}
-    <li>
-        <a href="?page={{ fortunes.previous_page_number }}">&laquo; previous</a>
-    </li>
-    {% endif %}
-    <li>    
-        Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }}
-    </li>
-    {% if fortunes.has_next %}
-    <li>
-        <a href="?page={{ fortunes.next_page_number }}">next &raquo;</a>
-    </li>
-    {% endif %}
-</ul>
+<nav class="pagination">
+    <ul>
+        {% if fortunes.has_previous %}
+        <li>
+            <a href="?page={{ fortunes.previous_page_number }}">&laquo; previous</a>
+        </li>
+        {% endif %}
+        <li>    
+            Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }}
+        </li>
+        {% if fortunes.has_next %}
+        <li>
+            <a href="?page={{ fortunes.next_page_number }}">next &raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 {% endif %}
 {% endblock content %}

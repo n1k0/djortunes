@@ -1,16 +1,18 @@
 {% load fortune_extras %}
 
-<h2>
-    <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
-</h2>
-<p>
-    Posted by {{ fortune.author }} {{ fortune.pub_date|timesince }} ago.
-    <span class="vote">
+<article class="fortune" id="fortune_{{ fortune.id }}">
+    <h2>
+        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+    </h2>
+    <aside class="fortune-infos">
+        Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago.
+    </aside>
+    <aside class="fortune-actions">
         <strong>{{ fortune.votes }} votes</strong>
-        <a href="{% url fortune-vote fortune.id "down" %}">-</a> /
-        <a href="{% url fortune-vote fortune.id "up" %}">+</a>
-    </span>
-</p>
-<blockquote>
-    {{ fortune.content|fortunize|safe }}
-</blockquote>
+        <a href="{% url fortune-vote fortune.id "down" %}" title="Vote down this fortune">-</a> /
+        <a href="{% url fortune-vote fortune.id "up" %}" title="Vote up this fortune">+</a>
+    </aside>
+    <blockquote>
+        {{ fortune.content|fortunize|safe }}
+    </blockquote>
+</article>
