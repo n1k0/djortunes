@@ -2,17 +2,20 @@
 
 <article class="fortune" id="fortune_{{ fortune.id }}">
     <h2>
-        <a href="{% url fortune-detail fortune.id %}">{{ fortune.title }}</a>
+        <a href="{% url fortune-detail fortune.id %}">#{{ fortune.id }}. {{ fortune.title }}</a>
     </h2>
-    <aside class="fortune-infos">
-        Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago.
-    </aside>
-    <aside class="fortune-actions">
-        <strong>{{ fortune.votes }} votes</strong>
-        <a href="{% url fortune-vote fortune.id "down" %}" title="Vote down this fortune">-</a> /
-        <a href="{% url fortune-vote fortune.id "up" %}" title="Vote up this fortune">+</a>
-    </aside>
     <blockquote>
         {{ fortune.content|fortunize|safe }}
+        <br style="clear:both"/>
     </blockquote>
+    <aside class="fortune-infos">
+        <p>
+            Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago.
+            <span class="fortune-actions">
+                <strong>{{ fortune.votes }} votes</strong>
+                <a href="{% url fortune-vote fortune.id "down" %}" title="Vote down this fortune">-</a> /
+                <a href="{% url fortune-vote fortune.id "up" %}" title="Vote up this fortune">+</a>
+            </span>
+        </p>
+    </aside>
 </article>

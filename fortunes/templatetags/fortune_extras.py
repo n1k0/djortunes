@@ -19,7 +19,7 @@ def fortunize(value):
             for match in m:
                 nick = match[0]
                 quote = escape(match[1])
-                r += "<dt class=\"%s\">%s</dt><dd><q>%s</q></dd>\n" % (className, nick, quote)
+                r += "<dt class=\"%s\">&lt;%s&gt;</dt><dd><q>%s</q></dd>\n" % (className, nick, quote)
         else:
             r += "<dt>&nbsp;</dt><dd>%s</dd>\n" % (line)
     return "<dl>%s</dl>" % r

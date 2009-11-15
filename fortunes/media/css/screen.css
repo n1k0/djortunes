@@ -1,14 +1,12 @@
 body {
-    font-size: 18px;
+    font-size: 16px;
     width: 960px;
     margin: 0 auto;
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
 }
 a {
     color: #000;
 }
-    a:hover {
-        color: #555;
-    }
 h1 {
     text-align: center;
     padding-bottom: -10px;
@@ -22,6 +20,12 @@ h1 {
         line-height: 1.5;
         word-spacing: 0.1em;
     }
+    h2 {
+        font: 27px/34px 'Andika Basic Regular', Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", sans-serif;
+    }
+        h2 a {
+            text-decoration: none;
+        }
 nav#menu {
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
@@ -51,6 +55,45 @@ section#main {
     display: block;
     padding-top: 1px;
 }
+    section#main article.fortune h2 {
+        clear: left;
+    }
+    section#main article.fortune blockquote {
+        background: #444;
+        color: #fff;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+    }
+    section#main article.fortune blockquote dl {
+        font: 18px/27px 'Andika Basic Regular', Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", sans-serif;
+        line-height: 1.6em;
+        margin: 24px;
+    }
+    section#main article.fortune blockquote dt {
+        clear: left;
+        display: block;
+        width: 120px;
+        float: left;
+        text-align: right;
+        padding: 3px 10px 3px 0;
+        border-right: 1px solid #ccc;
+    }
+        section#main article.fortune blockquote dt.even {
+        }
+    section#main article.fortune blockquote dd {
+        display: block;
+        width: 620px;
+        float: left;
+        margin-left: 10px;
+        padding: 3px 0 3px 0
+    }
+    section#main article.fortune aside.fortune-infos p {
+        clear: left;
+        padding: 10px 0 5px 0;
+        margin: 0 40px;
+        border-bottom: 1px solid #000;
+    }
 footer p {
     text-align: center;
     padding: 15px 0 0;
