@@ -14,38 +14,37 @@
             <p>
                 <small>When it's funny, it's quoted™</small>
             </p>
+            <nav id="menu">
+                {% block navigation %}
+                <ul>
+                    <li class="{% ifequal section "default" %}active{% endifequal %}">
+                        <a href="{% url fortunes-index "" %}">
+                            Latest
+                            <small>Recently added quotes</small>
+                        </a>
+                    </li>
+                    <li class="{% ifequal section "top" %}active{% endifequal %}">
+                        <a href="{% url fortunes-index "top" %}">
+                            Top
+                            <small>Top rated quotes</small>
+                        </a>
+                    </li>
+                    <li class="{% ifequal section "worst" %}active{% endifequal %}">
+                        <a href="{% url fortunes-index "worst" %}">
+                            Worst
+                            <small>Badly rated quotes</small>
+                        </a>
+                    </li>
+                    <li class="{% ifequal section "new" %}active{% endifequal %}">
+                        <a href="{% url fortune-new %}">
+                            Add
+                            <small>Add your own quote!</small>
+                        </a>
+                    </li>
+                </ul>
+                {% endblock %}
+            </nav>
         </header>
-
-        <nav id="menu">
-            {% block navigation %}
-            <ul>
-                <li>
-                    <a href="{% url fortunes-index "" %}">
-                        Latest
-                        <small>Recently added quotes</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url fortunes-index "top" %}">
-                        Top
-                        <small>Top rated quotes</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url fortunes-index "worst" %}">
-                        Worst
-                        <small>Badly rated quotes</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url fortune-new %}">
-                        Add
-                        <small>Add your own quote!</small>
-                    </a>
-                </li>
-            </ul>
-            {% endblock %}
-        </nav>
 
         <section id="main">
         {% block content %}{% endblock %}

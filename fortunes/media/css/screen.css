@@ -7,6 +7,9 @@ body {
 a {
     color: #000;
 }
+q {
+    quotes: none;
+}
 h1 {
     text-align: center;
     padding: 0;
@@ -26,11 +29,15 @@ h1 {
         h2 a {
             text-decoration: none;
         }
-header p small {
+header {
     display: block;
-    text-align: center;
-    margin-top: -40px;
+    background: #fff url("../images/inkblot.png") no-repeat 190px 0px;
 }
+    header p small {
+        display: block;
+        text-align: center;
+        margin-top: -40px;
+    }
 nav#menu {
     padding-bottom: 12px;
 }
@@ -47,9 +54,17 @@ nav#menu {
             width: 230px;
             text-align: center;
         }
+        nav#menu li.active {
+            background-color: #000;
+            color: #fff;
+        }
             nav#menu li:hover {
                 background-color: #000;
                 color: #fff;
+            }
+            nav#menu li.active:hover {
+                background-color: #000;
+                color: #000;
             }
         nav#menu li a {
             display: block;
@@ -59,6 +74,9 @@ nav#menu {
             font-weight: normal;
             font-size: 120%;
         }
+        nav#menu li.active a {
+            color: #fff;
+        }        
             nav#menu li a:hover {
                 color: #fff;
             }

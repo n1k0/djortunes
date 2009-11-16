@@ -35,23 +35,22 @@ def index(request, ftype):
         order_by = 'votes'
     else:
         order_by = '-pub_date'
-
     fortune_list = Fortune.objects.all().order_by(order_by)#[:10]
     paginator = Paginator(fortune_list, fsettings.MAX_PER_PAGE)
-    
     # Make sure page request is an int. If not, deliver first page.
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-    
     # If page request (9999) is out of range, deliver last page of results.
     try:
         fortunes = paginator.page(page)
     except (EmptyPage, InvalidPage):
         fortunes = paginator.page(paginator.num_pages)
-
-    return render_to_response('index.html', {'fortunes': fortunes})
+    return render_to_response('index.html', {
+        'fortunes': fortunes, 
+        'section': ("default" if ftype == "" else ftype)
+    })
 
 def new(request):
     "Provides a Fortune creation form, validates the form and saves a new Fortune in the database"
@@ -64,6 +63,7 @@ def new(request):
         form = PublicFortuneForm()
     return render_to_response('new.html', RequestContext(request, {
         'form': form,
+        'section': "new",
     }))
 
 def vote(request, fortune_id, direction):
