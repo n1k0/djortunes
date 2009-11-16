@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 from djortunes.fortunes.models import Comment, Fortune
 from djortunes.fortunes.forms import PublicCommentForm, PublicFortuneForm
+from djortunes.fortunes import settings as fsettings
 
 def detail(request, fortune_id):
     """
@@ -36,7 +37,7 @@ def index(request, ftype):
         order_by = '-pub_date'
 
     fortune_list = Fortune.objects.all().order_by(order_by)#[:10]
-    paginator = Paginator(fortune_list, 2)
+    paginator = Paginator(fortune_list, fsettings.MAX_PER_PAGE)
     
     # Make sure page request is an int. If not, deliver first page.
     try:

@@ -11,24 +11,53 @@
             <h1>
                 <a href="{% url fortunes-index "" %}">Fortunes</a>
             </h1>
+            <p>
+                <small>When it's funny, it's quoted™</small>
+            </p>
         </header>
+
+        <nav id="menu">
+            {% block navigation %}
+            <ul>
+                <li>
+                    <a href="{% url fortunes-index "" %}">
+                        Latest
+                        <small>Recently added quotes</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url fortunes-index "top" %}">
+                        Top
+                        <small>Top rated quotes</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url fortunes-index "worst" %}">
+                        Worst
+                        <small>Badly rated quotes</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url fortune-new %}">
+                        Add
+                        <small>Add your own quote!</small>
+                    </a>
+                </li>
+            </ul>
+            {% endblock %}
+        </nav>
 
         <section id="main">
         {% block content %}{% endblock %}
         </section>
 
-        {% block sidebar %}
-        <nav id="menu">
-            {% block navigation %}
-            <ul>
-                <li><a href="{% url fortunes-index "" %}">Latest</a></li>
-                <li><a href="{% url fortunes-index "top" %}">Top</a></li>
-                <li><a href="{% url fortunes-index "worst" %}">Worst</a></li>
-                <li><a href="{% url fortune-new %}">Add</a></li>
-            </ul>
-            {% endblock %}
-        </nav>
-        {% endblock sidebar %}
+        {% block misc %}
+        <section id="misc">
+            <div class="content">
+                <p>Foo, this is the sidebar</p>
+            </div>
+        </section>
+        {% endblock misc %}
         
         <footer>
             <p>
