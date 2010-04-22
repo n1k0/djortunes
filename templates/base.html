@@ -1,3 +1,5 @@
+{% load fortune_extras %}
+
 <!DOCTYPE html>
 <html class="djortunes">
     <head>
@@ -63,18 +65,11 @@
                     {% endblock about %}
                     {% block contributors %}
                     <h2>Top contributors</h2>
-                    <ul>
-                        <li><a href="#">niko</a></li>
-                        <li><a href="#">John</a></li>
-                        <li><a href="#">Bob</a></li>
-                        <li><a href="#">Dude</a></li>
-                        <li><a href="#">Fred</a></li>
-                    </ul>
+                    {% top_contributors %}
                     {% endblock contributors %}
                 </div>
             </section>
             {% endblock misc %}
-            <br style="clear: both" />
         </div>
         
         <footer>

@@ -2,6 +2,8 @@ import re
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.html import escape
+from djortunes.fortunes.models import Fortune
+from djortunes.fortunes import settings as fsettings
 
 register = template.Library()
 
@@ -24,3 +26,9 @@ def fortunize(value):
             r += "<dt>&nbsp;</dt><dd>%s</dd>\n" % (line)
     return "<dl>%s</dl>" % r
 
+@register.inclusion_tag('partials/topcontributors.html')
+def top_contributors():
+    """
+    Displays the list of MAX_TOP_CONTRIBUTORS top contributors
+    """
+    return {'authors': Fortune.top_authors(fsettings.MAX_TOP_CONTRIBUTORS)}

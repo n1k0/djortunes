@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg, Max, Min, Count
 
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)
@@ -9,6 +10,10 @@ class Fortune(models.Model):
     
     def __unicode__(self):
         return "%s, from %s" % (self.title, self.author)
+
+    @staticmethod
+    def top_authors(max):
+        return Fortune.objects.values('author').annotate(nb=Count('id')).order_by('-nb')[:max]
 
 class Comment(models.Model):
     fortune = models.ForeignKey(Fortune, blank=False)

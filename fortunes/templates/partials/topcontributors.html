@@ -1,0 +1,9 @@
+{% if authors %}
+<ol>
+{% for author in authors %}
+    <li>{{ author.author }} ({{ author.nb }})</li>
+{% endfor %}
+</ol>
+{% else %}
+<p>No author yet</p>
+{% endif %}
