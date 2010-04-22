@@ -45,24 +45,47 @@
                 {% endblock %}
             </nav>
         </header>
+        
+        <div class="holder">
+            <section id="main">
+            {% block content %}{% endblock %}
+            </section>
 
-        <section id="main">
-        {% block content %}{% endblock %}
-        </section>
-
-        {% block misc %}
-        <section id="misc">
-            <div class="content">
-                <p>Foo, this is the sidebar</p>
-            </div>
-        </section>
-        {% endblock misc %}
+            {% block misc %}
+            <section id="misc">
+                <div class="content">
+                    {% block about %}
+                    <h2>About</h2>
+                    <p>
+                        Fortunes is a repository of quotes. You can create an account to 
+                        add your own, or get the source to install it on your own server.
+                    </p>
+                    {% endblock about %}
+                    {% block contributors %}
+                    <h2>Top contributors</h2>
+                    <ul>
+                        <li><a href="#">niko</a></li>
+                        <li><a href="#">John</a></li>
+                        <li><a href="#">Bob</a></li>
+                        <li><a href="#">Dude</a></li>
+                        <li><a href="#">Fred</a></li>
+                    </ul>
+                    {% endblock contributors %}
+                </div>
+            </section>
+            {% endblock misc %}
+            <br style="clear: both" />
+        </div>
         
         <footer>
             <p>
-                Powered by <a href="http://www.djangoproject.com/">Django</a> 
-                and <a href="http://github.com/n1k0/djortunes">djortunes</a>,
-                baked by <a href="http://prendreuncafe.com/">NiKo</a>
+                <small>
+                    Powered by <a href="http://www.djangoproject.com/">Django</a> 
+                    and <a href="http://github.com/n1k0/djortunes">djortunes</a>, 
+                    baked by <a href="http://prendreuncafe.com/">NiKo</a> and 
+                    originaly inspired by <a href="http://fortunes.inertie.org/">fortunes</a>, 
+                    by <em>Maurice Svay</em>.
+                </small>
             </p>
         </footer>
     </body>

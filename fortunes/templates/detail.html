@@ -28,17 +28,19 @@
     </section>
     
     <section class="fortune-comment-form">
-        <h3>Add a comment</h3>
-        <form method="post" action="{% url fortune-detail fortune.id %}">
-            {% csrf_token %}
-            <table>
-                {{ commentForm }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit"/></td>
-                </tr>
-            </table>
-        </form>
+        <div class="comment-form-block">
+            <h3>Add a comment</h3>
+            <form method="post" action="{% url fortune-detail fortune.id %}">
+                {% csrf_token %}
+                <table>
+                    {{ commentForm }}
+                    <tr>
+                        <td></td>
+                        <td><input type="submit"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </section>
     
     <aside class="fortune-context-actions">

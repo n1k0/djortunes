@@ -10,11 +10,11 @@
     </blockquote>
     <aside class="fortune-infos">
         <p>
-            Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago.
+            Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago. 
             <span class="fortune-actions">
-                <strong>{{ fortune.votes }} votes</strong>
-                <a href="{% url fortune-vote fortune.id "down" %}" title="Vote down this fortune">-</a> /
-                <a href="{% url fortune-vote fortune.id "up" %}" title="Vote up this fortune">+</a>
+                <strong>{{ fortune.votes }} votes</strong> 
+                <a href="{% url fortune-vote fortune.id "down" %}" title="Vote down this fortune">-</a> / 
+                <a href="{% url fortune-vote fortune.id "up" %}" title="Vote up this fortune">+</a> 
             </span>
         </p>
     </aside>

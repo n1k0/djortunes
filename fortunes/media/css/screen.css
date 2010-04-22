@@ -10,6 +10,13 @@ a {
 q {
     quotes: none;
 }
+    q:before, q:after { /* for webkit */
+        content: "";
+        content: none;
+    }
+h1, h2, h3, h4, h5, h6 {
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+}
 h1 {
     text-align: center;
     padding: 0;
@@ -31,7 +38,7 @@ h1 {
         }
 header {
     display: block;
-    background: #fff url("../images/inkblot.png") no-repeat 190px 0px;
+    background: #fff url("../images/inkblot.png") no-repeat 180px 10px;
 }
     header p small {
         display: block;
@@ -97,6 +104,11 @@ nav.pagination ul {
         nav.pagination li:after {
             content: " · ";
         }
+div.holder {
+    display: block;
+    background: transparent url("../images/inkblot2.png") repeat-y;
+    margin-bottom: 16px;
+}
 section#main {
     clear: both;
     display: block;
@@ -104,12 +116,10 @@ section#main {
     display: block;
     float: left;
     width: 650px;
-    border-right: 2px solid #000;
-    padding-right: 10px;
     margin-bottom: 10px;
 }
     article.fortune h2 {
-        margin: 20px 0 0;
+        margin: 0;
         padding: 0;
         clear: left;
     }
@@ -120,6 +130,7 @@ section#main {
         -webkit-border-radius: 8px;
         border-radius: 8px;
         margin-right: 10px;
+        margin-left: 30px;
     }
     article.fortune blockquote dl {
         font-family: 'Andika Basic Regular', Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", sans-serif;
@@ -147,18 +158,31 @@ section#main {
     article.fortune aside.fortune-infos p {
         clear: left;
         padding: 10px 0 16px 0;
-        margin: 0 10px 0 40px;
+        margin: 0 10px 16px 30px;
         border-bottom: 1px solid #000;
+    }
+    .comments-block {
+        margin-left: 30px;
+    }
+    .comment-form-block {
+        margin-left: 30px;
+    }
+    .fortune-context-actions p {
+        margin-left: 30px;
     }
 section#misc .content {
     float: left;
-    width: 274px;
-    padding-left: 16px;
-    margin: 16px 0 0 6px;
+    width: 184px;
+    padding-left: 80px;
+    margin-top: -12px;
 }
+    section#misc .content h2 {
+        font-size: 22px;
+    }
 footer p {
     clear: both;
     text-align: center;
+    margin-top: 16px;
     padding: 15px 0 0;
     border-top: 2px solid #000;
 }

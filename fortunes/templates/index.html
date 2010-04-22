@@ -20,15 +20,15 @@
     <ul>
         {% if fortunes.has_previous %}
         <li>
-            <a href="?page={{ fortunes.previous_page_number }}">&laquo; previous</a>
+            <a href="?page={{ fortunes.previous_page_number }}">&laquo; previous</a> 
         </li>
         {% endif %}
         <li>    
-            Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }}
+            Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }} 
         </li>
         {% if fortunes.has_next %}
         <li>
-            <a href="?page={{ fortunes.next_page_number }}">next &raquo;</a>
+            <a href="?page={{ fortunes.next_page_number }}">next &raquo;</a> 
         </li>
         {% endif %}
     </ul>
