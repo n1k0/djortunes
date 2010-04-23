@@ -25,7 +25,9 @@
         </li>
         {% endif %}
         <li>
-            Page {{ page_obj.number }} of {{ paginator.num_pages }}
+            {% blocktrans with page_obj.number as number and paginator.num_pages as num_pages %}
+                Page {{ page_obj }} of {{ num_pages }}
+            {% endblocktrans %}
         </li>
         {% if has_next %}
         <li>

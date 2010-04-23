@@ -1,11 +1,11 @@
 {% load i18n %}
 
 {% if authors %}
-<ol>
-{% for author in authors %}
-    <li>{{ author.author }} ({{ author.nb }})</li>
-{% endfor %}
-</ol>
+    <ol>
+        {% for author in authors %}
+        <li>{{ author.author }} ({{ author.nb }})</li>
+        {% endfor %}
+    </ol>
 {% else %}
-<p>{% trans "No author yet" %}</p>
+    <p>{% trans "No author yet" %}</p>
 {% endif %}

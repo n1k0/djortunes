@@ -1,4 +1,4 @@
-{% load fortune_extras %}
+{% load fortune_extras i18n %}
 
 <article class="fortune" id="fortune_{{ fortune.pk }}">
     <h2>
@@ -10,9 +10,13 @@
     </blockquote>
     <aside class="fortune-infos">
         <p>
-            Posted by <strong>{{ fortune.author }}</strong> {{ fortune.pub_date|timesince }} ago. 
+            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}
+                Posted by <strong>{{ author }}</strong> {{ pub_date }} ago. 
+            {% endblocktrans %}
             <span class="fortune-actions">
-                <strong>{{ fortune.votes }} votes</strong> 
+                <strong>{% blocktrans with fortunes.votes as votes %}
+                    {{ votes }} votes
+                {% endblocktrans %}</strong>
                 <a href="{% url fortune_vote fortune.pk "down" %}" title="Vote down this fortune">-</a> / 
                 <a href="{% url fortune_vote fortune.pk "up" %}" title="Vote up this fortune">+</a> 
             </span>

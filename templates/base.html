@@ -14,33 +14,33 @@
                 <a href="{% url fortune_index %}">Fortunes</a>
             </h1>
             <p>
-                <small>When it's funny, it's quoted™</small>
+                <small>{% trans "When it's funny, it's quoted™" %}</small>
             </p>
             <nav id="menu">
                 {% block navigation %}
                 <ul>
                     <li class="{% ifequal section "default" %}active{% endifequal %}">
                         <a href="{% url fortune_index %}">
-                            Latest
-                            <small>Recently added quotes</small>
+                            {% trans "Latest" %}
+                            <small>{% trans "Recently added quotes" %}</small>
                         </a>
                     </li>
                     <li class="{% ifequal section "top" %}active{% endifequal %}">
                         <a href="{% url fortune_index_type "top" %}">
-                            Top
-                            <small>Top rated quotes</small>
+                            {% trans "Top" %}
+                            <small>{% trans "Top rated quotes" %}</small>
                         </a>
                     </li>
                     <li class="{% ifequal section "worst" %}active{% endifequal %}">
                         <a href="{% url fortune_index_type "worst" %}">
-                            Worst
-                            <small>Badly rated quotes</small>
+                            {% trans "Worst" %}
+                            <small>{% trans "Badly rated quotes" %}</small>
                         </a>
                     </li>
                     <li class="{% ifequal section "new" %}active{% endifequal %}">
                         <a href="{% url fortune_new %}">
-                            Add
-                            <small>Add your own quote!</small>
+                            {% trans "Add" %}
+                            <small>{% trans "Add your own quote!" %}</small>
                         </a>
                     </li>
                 </ul>
@@ -57,14 +57,14 @@
             <section id="misc">
                 <div class="content">
                     {% block about %}
-                    <h2>About</h2>
+                    <h2>{% trans "About" %}</h2>
                     <p>
-                        Fortunes is a repository of quotes. You can create an account to 
-                        add your own, or get the source to install it on your own server.
+                        {% trans "Fortunes is a repository of quotes. You can create an account to 
+                        add your own, or get the source to install it on your own server." %}
                     </p>
                     {% endblock about %}
                     {% block contributors %}
-                    <h2>Top contributors</h2>
+                    <h2>{% trans "Top contributors" %}</h2>
                     {% top_contributors %}
                     {% endblock contributors %}
                 </div>
@@ -75,11 +75,11 @@
         <footer>
             <p>
                 <small>
-                    Powered by <a href="http://www.djangoproject.com/">Django</a> 
-                    and <a href="http://github.com/n1k0/djortunes">djortunes</a>, 
-                    baked by <a href="http://prendreuncafe.com/">NiKo</a> and 
-                    originaly inspired by <a href="http://fortunes.inertie.org/">fortunes</a>, 
-                    by <em>Maurice Svay</em>.
+                    {% trans "Powered by" %} <a href="http://www.djangoproject.com/">Django</a> 
+                    {% trans "and" %} <a href="http://github.com/n1k0/djortunes">djortunes</a>, 
+                    {% trans "baked by" %} <a href="http://prendreuncafe.com/">NiKo</a> and 
+                    {% trans "originaly inspired by" %} <a href="http://fortunes.inertie.org/">fortunes</a>, 
+                    {% trans "by" %} <em>Maurice Svay</em>.
                 </small>
             </p>
         </footer>

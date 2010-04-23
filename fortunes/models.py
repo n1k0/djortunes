@@ -13,7 +13,7 @@ class Fortune(models.Model):
     objects = FortuneManager()
     
     def __unicode__(self):
-        return "%s, from %s" % (self.title, self.author)
+        return _("%s, from %s") % (self.title, self.author)
     
     @models.permalink
     def get_absolute_url(self):
