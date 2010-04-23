@@ -37,7 +37,6 @@ LANGUAGES = (
     ('en', ugettext('English')),
 )
 
-
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
