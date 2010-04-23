@@ -19,4 +19,52 @@
         "pub_date": "2009-11-03 09:30:29",
         "author": "Dude"
     }
+},
+{
+    "pk": 1,
+    "model": "comments.comment",
+    "fields": {
+        "comment": "You're right, man",
+        "submit_date": "2009-11-03 09:30:48",
+        "user_name": "Dude",
+        "ip_address": "127.0.0.1", 
+        "object_pk": "1", 
+        "site": 1, 
+        "is_removed": false, 
+        "user": null, 
+        "content_type": 11, 
+        "is_public": true, 
+        "user_name": "test", 
+        "user_email": "dude@gmail.com"
+    }
+},
+{
+    "pk": 2,
+    "model": "comments.comment",
+    "fields": {
+        "comment": "I know",
+        "submit_date": "2009-11-03 09:31:03",
+        "ip_address": "127.0.0.1", 
+        "object_pk": "1", 
+        "site": 1, 
+        "is_removed": false, 
+        "user": null, 
+        "content_type": 11,
+        "user_name": "NiKo"
+    }
+},
+{
+    "pk": 3,
+    "model": "comments.comment",
+    "fields": {
+        "comment": "Interesting.",
+        "submit_date": "2009-11-03 09:31:14",
+        "ip_address": "127.0.0.1", 
+        "object_pk": "2", 
+        "site": 1, 
+        "is_removed": false, 
+        "user": null, 
+        "content_type": 11,
+        "user_name": "NiKo"
+    }
 }]
