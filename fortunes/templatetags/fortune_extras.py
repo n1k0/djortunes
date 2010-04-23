@@ -1,9 +1,11 @@
 import re
+
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.html import escape
+from django.conf import settings
+
 from djortunes.fortunes.models import Fortune
-from djortunes.fortunes import settings as fsettings
 
 register = template.Library()
 
@@ -31,4 +33,4 @@ def top_contributors():
     """
     Displays the list of MAX_TOP_CONTRIBUTORS top contributors
     """
-    return {'authors': Fortune.top_authors(fsettings.MAX_TOP_CONTRIBUTORS)}
+    return {'authors': Fortune.objects.top_authors(settings.MAX_TOP_CONTRIBUTORS)}

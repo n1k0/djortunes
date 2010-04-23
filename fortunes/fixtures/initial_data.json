@@ -19,34 +19,4 @@
         "pub_date": "2009-11-03 09:30:29",
         "author": "Dude"
     }
-},
-{
-    "pk": 1,
-    "model": "fortunes.comment",
-    "fields": {
-        "content": "You're right, man",
-        "pub_date": "2009-11-03 09:30:48",
-        "fortune": 1,
-        "author": "Dude"
-    }
-},
-{
-    "pk": 2,
-    "model": "fortunes.comment",
-    "fields": {
-        "content": "I know",
-        "pub_date": "2009-11-03 09:31:03",
-        "fortune": 1,
-        "author": "NiKo"
-    }
-},
-{
-    "pk": 3,
-    "model": "fortunes.comment",
-    "fields": {
-        "content": "Interesting.",
-        "pub_date": "2009-11-03 09:31:14",
-        "fortune": 2,
-        "author": "NiKo"
-    }
 }]

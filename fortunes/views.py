@@ -1,74 +1,78 @@
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.conf import settings
+from django.views.generic import date_based, list_detail
 from django.template import RequestContext
-from djortunes.fortunes.models import Comment, Fortune
-from djortunes.fortunes.forms import PublicCommentForm, PublicFortuneForm
-from djortunes.fortunes import settings as fsettings
 
-def detail(request, fortune_id):
-    """
-    Display one fortune, and provides a comment form wich will be handled and persisted if 
-    request is POST
-    """
-    fortune = get_object_or_404(Fortune, id = fortune_id)
-    comments = fortune.comment_set.all().order_by('pub_date')
-    comment = Comment(fortune = fortune)
-    if request.method == "POST":
-        commentForm = PublicCommentForm(request.POST, instance = comment)
-        if commentForm.is_valid():
-            comment = commentForm.save()
-            return redirect(reverse('fortune-detail', args=[fortune.id]) + '#c_' + str(comment.id))
-    else:
-        commentForm = PublicCommentForm(instance = comment)
-    return render_to_response('detail.html', RequestContext(request, {
-        'fortune':     fortune, 
-        'comments':    comments, 
-        'commentForm': commentForm,
-    }))
+from djortunes.fortunes.models import Fortune
+from djortunes.fortunes.forms import PublicFortuneForm
 
-def index(request, ftype):
-    "Lists Fortunes"
-    if ftype == 'top':
+def fortune_detail(request, year, month, day, object_pk,
+                   template_name='detail.html', template_object_name='fortune',
+                   **kwargs):
+    '''
+    Display one fortune, and provides a comment form wich will
+    be handled and persisted if request is POST
+    '''
+    return date_based.object_detail(
+      request,
+      year = year,
+      month = month,
+      day = day,
+      date_field = 'pub_date',
+      object_id = object_pk,
+      queryset = Fortune.objects.published(),
+      month_format = '%m',
+      template_object_name = template_object_name,
+      template_name = template_name,
+      **kwargs
+    )
+
+def fortune_list(request, order_type='top', template_name='index.html',
+                 template_object_name='fortune', **kwargs):
+    '''
+    Lists Fortunes
+    '''
+    if order_type == 'top':
         order_by = '-votes'
-    elif ftype == 'worst':
+    elif order_type == 'worst':
         order_by = 'votes'
     else:
         order_by = '-pub_date'
-    fortune_list = Fortune.objects.all().order_by(order_by)#[:10]
-    paginator = Paginator(fortune_list, fsettings.MAX_PER_PAGE)
-    # Make sure page request is an int. If not, deliver first page.
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-    # If page request (9999) is out of range, deliver last page of results.
-    try:
-        fortunes = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        fortunes = paginator.page(paginator.num_pages)
-    return render_to_response('index.html', {
-        'fortunes': fortunes, 
-        'section': ("default" if ftype == "" else ftype)
-    })
+    
+    return list_detail.object_list(
+      request,
+      queryset = Fortune.objects.all().order_by(order_by),
+      paginate_by = settings.MAX_PER_PAGE,
+      template_name = template_name,
+      template_object_name = template_object_name,
+      extra_context = {'order_type': order_type},
+      **kwargs
+    )
 
-def new(request):
-    "Provides a Fortune creation form, validates the form and saves a new Fortune in the database"
-    if request.method == "POST":
+def fortune_new(request, template_name='new.html'):
+    '''
+    Provides a Fortune creation form, validates the form and saves
+    a new Fortune in the database
+    '''
+    if request.method == 'POST':
         form = PublicFortuneForm(request.POST)
         if form.is_valid():
             fortune = form.save()
-            return redirect(reverse('fortune-detail', args=[fortune.id]))        
+            return redirect(fortune)
     else:
         form = PublicFortuneForm()
-    return render_to_response('new.html', RequestContext(request, {
-        'form': form,
-        'section': "new",
-    }))
+    return render_to_response(template_name,
+                              {'form': form, 'section': 'new'},
+                              context_instance=RequestContext(request))
 
-def vote(request, fortune_id, direction):
-    "Votes for a fortune"
-    fortune = get_object_or_404(Fortune, id = fortune_id)
+def fortune_vote(request, object_pk, direction):
+    '''
+    Votes for a fortune
+    '''
+    fortune = get_object_or_404(Fortune, pk=object_pk)
     fortune.votes += 1 if direction == 'up' else -1
     fortune.save()
-    return redirect(reverse('fortune-detail', args=[fortune.id]))
+    
+    return redirect(fortune)

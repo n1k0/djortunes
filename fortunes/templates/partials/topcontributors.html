@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% if authors %}
 <ol>
 {% for author in authors %}
@@ -5,5 +7,5 @@
 {% endfor %}
 </ol>
 {% else %}
-<p>No author yet</p>
+<p>{% trans "No author yet" %}</p>
 {% endif %}

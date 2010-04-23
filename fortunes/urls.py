@@ -1,15 +1,12 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-from djortunes.fortunes import settings as fsettings
 
-urlpatterns = patterns('djortunes.fortunes.views',
-    url(r'^(?P<ftype>(top|worst)?)$', 'index', name = "fortunes-index"),
-    url(r'^new$', 'new', name = "fortune-new"),
-    url(r'^show/(?P<fortune_id>\d+)$', 'detail', name = "fortune-detail"),
-    url(r'^vote/(?P<fortune_id>\d+)/(?P<direction>(up|down))$', 'vote', name = "fortune-vote"),
+from fortunes.views import fortune_list, fortune_detail, fortune_vote, fortune_new
+
+urlpatterns = patterns('',
+    url(r'^$', fortune_list, name='fortune_index'),
+    url(r'^(?P<order_type>(top|worst)?)/(?P<page>\w)?$', fortune_list, name='fortune_index_type'),
+    url(r'^new$', fortune_new, name = 'fortune_new'),
+    url(r'^show/(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<object_pk>\d+)/$', fortune_detail, name='fortune_detail'),
+    url(r'^vote/(?P<object_pk>\d+)/(?P<direction>(up|down))$', fortune_vote, name='fortune_vote'),
 )
-
-if settings.DEBUG:
-    urlpatterns += patterns('django.views.static',
-        (r'^static/(?P<path>.*)$', 'serve', {'document_root': fsettings.STATIC_DOC_ROOT}),
-    )

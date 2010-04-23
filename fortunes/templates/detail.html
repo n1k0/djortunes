@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n comments %}
+
 {% block title %}Fortune #{{ fortune.id }}{% endblock %}
 
 {% block content %}
@@ -9,45 +11,45 @@
     
     <section class="fortune-comments">
         <div class="comments-block">
-            <h3>Comments</h3>
+            <h3>{% trans "Comments" %}</h3>
+            {% get_comment_list for fortune as comments %}
             {% if comments %}
-            {% for comment in comments %}
-            <article class="fortune-comment" id="c_{{ comment.id }}">
-                <blockquote>
-                    {{ comment.content }}
-                </blockquote>
-                <p>
-                    Posted by {{ comment.author }} {{ comment.pub_date|timesince }} ago
-                </p>
-            </article>
-            {% endfor %}
+                {% for comment in comments %}
+                <article class="fortune-comment" id="c_{{ comment.id }}">
+                    <blockquote>
+                        {{ comment.comment }}
+                    </blockquote>
+                    <p>
+                        Posted by {{ comment.user_name }} {{ comment.submit_date|timesince }} ago
+                    </p>
+                </article>
+                {% endfor %}
             {% else %}
-            <p>No comment yet</p>
+                <p>{% trans "No comment yet" %}</p>
             {% endif %}
         </div>
     </section>
     
     <section class="fortune-comment-form">
-        <div class="comment-form-block">
-            <h3>Add a comment</h3>
-            <form method="post" action="{% url fortune-detail fortune.id %}">
+        {% get_comment_form for fortune as form %}
+        <table>
+            <form action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
-                <table>
-                    {{ commentForm }}
-                    <tr>
-                        <td></td>
-                        <td><input type="submit"/></td>
-                    </tr>
-                </table>
+                {{ form }}
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" class="submit-post" value="{% trans "Submit" %}"></td>
+                    <input type="hidden" name="next" value="{{ fortune.get_absolute_url }}" />
+                </tr>
             </form>
-        </div>
+        </table>
     </section>
     
     <aside class="fortune-context-actions">
         <nav>
             <p>
-                Back to <a href="{% url fortunes-index "" %}">fortunes list</a> |
-                <a href="{% url fortune-new %}">Add a new fortune</a>
+                {% trans "Back to" %} <a href="{% url fortune_index %}">{% trans "Fortunes list" %}</a> |
+                <a href="{% url fortune_new %}">{% trans "Add a new fortune" %}</a>
             </p>
         </nav>
     </aside>

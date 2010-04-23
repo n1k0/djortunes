@@ -1,34 +1,35 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Fortunes list{% endblock %}
+{% block title %}{% trans "Fortunes list" %}{% endblock %}
 
 {% block content %}
 <section id="fortunes">
-{% if fortunes %}
-{% for fortune in fortunes.object_list %}
+{% if fortune_list %}
+{% for fortune in fortune_list %}
     {% with fortune as fortune %}
         {% include "partials/fortune.html" %}
     {% endwith %}
 {% endfor %}
 {% else %}
-    <p>No fortune found mathing your request.</p>
+    <p>{% trans "No fortune found mathing your request." %}</p>
 {% endif %}
 </section>
 
-{% if fortunes.has_previous or fortunes.has_next %}
+{% if has_previous or has_next %}
 <nav class="pagination">
     <ul>
-        {% if fortunes.has_previous %}
+        {% if has_previous %}
         <li>
-            <a href="?page={{ fortunes.previous_page_number }}">&laquo; previous</a> 
+            <a href="{% url fortune_index_type order_type page_obj.previous_page_number %}">&laquo; {% trans "previous" %}</a>
         </li>
         {% endif %}
-        <li>    
-            Page {{ fortunes.number }} of {{ fortunes.paginator.num_pages }} 
-        </li>
-        {% if fortunes.has_next %}
         <li>
-            <a href="?page={{ fortunes.next_page_number }}">next &raquo;</a> 
+            Page {{ page_obj.number }} of {{ paginator.num_pages }}
+        </li>
+        {% if has_next %}
+        <li>
+            <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a> 
         </li>
         {% endif %}
     </ul>
