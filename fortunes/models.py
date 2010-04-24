@@ -6,7 +6,7 @@ from fortunes.managers import FortuneManager
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)
     title = models.CharField(max_length=200, blank=False)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(_('slug'), unique_for_date='pub_date')
     content = models.TextField(blank=False)
     pub_date = models.DateTimeField(_('published date'))
     votes = models.IntegerField(default=0)
