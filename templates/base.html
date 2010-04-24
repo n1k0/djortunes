@@ -19,19 +19,19 @@
             <nav id="menu">
                 {% block navigation %}
                 <ul>
-                    <li class="{% ifequal section "default" %}active{% endifequal %}">
+                    <li class="{% ifequal order_type "default" %}active{% endifequal %}">
                         <a href="{% url fortune_index %}">
                             {% trans "Latest" %}
                             <small>{% trans "Recently added quotes" %}</small>
                         </a>
                     </li>
-                    <li class="{% ifequal section "top" %}active{% endifequal %}">
+                    <li class="{% ifequal order_type "top" %}active{% endifequal %}">
                         <a href="{% url fortune_index_type "top" %}">
                             {% trans "Top" %}
                             <small>{% trans "Top rated quotes" %}</small>
                         </a>
                     </li>
-                    <li class="{% ifequal section "worst" %}active{% endifequal %}">
+                    <li class="{% ifequal order_type "worst" %}active{% endifequal %}">
                         <a href="{% url fortune_index_type "worst" %}">
                             {% trans "Worst" %}
                             <small>{% trans "Badly rated quotes" %}</small>
@@ -59,8 +59,10 @@
                     {% block about %}
                     <h2>{% trans "About" %}</h2>
                     <p>
-                        {% trans "Fortunes is a repository of quotes. You can create an account to 
-                        add your own, or get the source to install it on your own server." %}
+                        {% blocktrans %}
+                        Fortunes is a repository of quotes. You can create an account to 
+                        add your own, or get the source to install it on your own server.
+                        {% endblocktrans %}
                     </p>
                     {% endblock about %}
                     {% block contributors %}

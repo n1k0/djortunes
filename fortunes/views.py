@@ -28,7 +28,7 @@ def fortune_detail(request, year, month, day, slug,
       **kwargs
     )
 
-def fortune_list(request, order_type='top', template_name='index.html',
+def fortune_list(request, order_type='default', template_name='index.html',
                  template_object_name='fortune', **kwargs):
     '''
     Lists Fortunes
