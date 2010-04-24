@@ -98,6 +98,3 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'djortunes.fortunes',
 )
-
-MAX_PER_PAGE = 3
-MAX_TOP_CONTRIBUTORS = 5

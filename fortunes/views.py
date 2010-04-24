@@ -43,7 +43,7 @@ def fortune_list(request, order_type='top', template_name='index.html',
     return list_detail.object_list(
       request,
       queryset = Fortune.objects.all().order_by(order_by),
-      paginate_by = settings.MAX_PER_PAGE,
+      paginate_by = getattr(settings, 'MAX_PER_PAGE', 3),
       template_name = template_name,
       template_object_name = template_object_name,
       extra_context = {'order_type': order_type},
