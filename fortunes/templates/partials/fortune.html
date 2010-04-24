@@ -14,7 +14,7 @@
                 Posted by <strong>{{ author }}</strong> {{ pub_date }} ago. 
             {% endblocktrans %}
             <span class="fortune-actions">
-                <strong>{% blocktrans with fortunes.votes as votes %}
+                <strong>{% blocktrans with fortune.votes as votes %}
                     {{ votes }} votes
                 {% endblocktrans %}</strong>
                 <a href="{% url fortune_vote fortune.pk "down" %}" title="Vote down this fortune">-</a> / 
