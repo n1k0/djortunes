@@ -1,4 +1,3 @@
-from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.conf import settings
