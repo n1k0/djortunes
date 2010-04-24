@@ -8,7 +8,7 @@ from django.template import RequestContext
 from djortunes.fortunes.models import Fortune
 from djortunes.fortunes.forms import PublicFortuneForm
 
-def fortune_detail(request, year, month, day, object_pk,
+def fortune_detail(request, year, month, day, slug,
                    template_name='detail.html', template_object_name='fortune',
                    **kwargs):
     '''
@@ -21,7 +21,7 @@ def fortune_detail(request, year, month, day, object_pk,
       month = month,
       day = day,
       date_field = 'pub_date',
-      object_id = object_pk,
+      slug = slug,
       queryset = Fortune.objects.published(),
       month_format = '%m',
       template_object_name = template_object_name,

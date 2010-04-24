@@ -6,8 +6,9 @@ from fortunes.managers import FortuneManager
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)
     title = models.CharField(max_length=200, blank=False)
+    slug = models.SlugField(max_length=50)
     content = models.TextField(blank=False)
-    pub_date = models.DateTimeField(_('published date'), auto_now_add=True)
+    pub_date = models.DateTimeField(_('published date'))
     votes = models.IntegerField(default=0)
     
     objects = FortuneManager()
@@ -18,7 +19,7 @@ class Fortune(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('fortune_detail', (), {
-            'object_pk': self.pk,
+            'slug': self.slug,
             'year': self.pub_date.year,
             'month': self.pub_date.month,
             'day': self.pub_date.day

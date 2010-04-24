@@ -5,6 +5,7 @@
         "content": "<niko> Yeah\r\n<dude> Sure",
         "votes": 0,
         "title": "My first fortune",
+        "slug": "my-first-fortune",
         "pub_date": "2009-11-03 09:30:07",
         "author": "NiKo"
     }
@@ -16,6 +17,7 @@
         "content": "<dude> Wow\r\n<niko> Sure",
         "votes": 0,
         "title": "Another One",
+        "slug": "another-one",
         "pub_date": "2009-11-03 09:30:29",
         "author": "Dude"
     }

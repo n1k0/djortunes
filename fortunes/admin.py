@@ -1,7 +1,19 @@
-from djortunes.fortunes.models import Fortune
+from fortunes.models import Fortune
+from fortunes.forms import FortuneForm
 from django.contrib import admin
 
-#class FortuneAdmin(admin.ModelAdmin):
-#    fields = ['title', 'content', 'author', 'pub_date']
+class FortuneAdmin(admin.ModelAdmin):
+    form = FortuneForm
+    prepopulated_fields = {"slug": ("title",)}
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'content', 'votes')
+        }),
+        ('Advanced options', {
+            'classes': ('collapse',),
+            'fields': ('pub_date',)
+        }),
+    )
+    list_display = ('title', 'author', 'votes')
 
-admin.site.register(Fortune)
+admin.site.register(Fortune, FortuneAdmin)
