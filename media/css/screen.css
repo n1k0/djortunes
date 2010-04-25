@@ -118,12 +118,12 @@ section#main {
     width: 650px;
     margin-bottom: 10px;
 }
-    article.fortune h2 {
+    .fortune h2 {
         margin: 0;
         padding: 0;
         clear: left;
     }
-    article.fortune blockquote {
+    .fortune blockquote {
         background: #000;
         color: #fff;
         -moz-border-radius: 8px;
@@ -132,12 +132,12 @@ section#main {
         margin-right: 10px;
         margin-left: 30px;
     }
-    article.fortune blockquote dl {
+    .fortune blockquote dl {
         font-family: 'Andika Basic Regular', Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", sans-serif;
         line-height: 1.6em;
         margin: 24px;
     }
-    article.fortune blockquote dt {
+    .fortune blockquote dt {
         clear: left;
         display: block;
         width: 120px;
@@ -147,7 +147,7 @@ section#main {
     }
         article.fortune blockquote dt.even {
         }
-    article.fortune blockquote dd {
+    .fortune blockquote dd {
         display: block;
         width: 354px;
         float: left;
@@ -155,8 +155,11 @@ section#main {
         padding: 3px 0 3px 8px;
         border-left: 1px solid #ccc;
     }
-    article.fortune aside.fortune-infos p {
-        clear: left;
+    .fortune blockquote br {
+      clear: both;
+    }
+    p.fortune-infos {
+        clear: both;
         padding: 10px 0 16px 0;
         margin: 0 10px 16px 30px;
         border-bottom: 1px solid #000;
@@ -170,7 +173,7 @@ section#main {
     .fortune-context-actions p {
         margin-left: 30px;
     }
-section#misc .content {
+#misc .content {
     float: left;
     width: 184px;
     padding-left: 80px;

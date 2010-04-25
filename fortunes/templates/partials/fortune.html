@@ -6,10 +6,10 @@
     </h2>
     <blockquote>
         {{ fortune.content|fortunize|safe }}
-        <br style="clear:both"/>
+        <br/>
     </blockquote>
-    <aside class="fortune-infos">
-        <p>
+    <aside>
+        <p class="fortune-infos">
             {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}
                 Posted by <strong>{{ author }}</strong> {{ pub_date }} ago. 
             {% endblocktrans %}
