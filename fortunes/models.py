@@ -1,14 +1,17 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
 
 from fortunes.managers import FortuneManager
 
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)
     title = models.CharField(max_length=200, blank=False)
-    slug = models.SlugField(_('slug'), unique_for_date='pub_date')
+    slug = models.SlugField(_('slug'), db_index=True, max_length=255, unique_for_date='pub_date')
     content = models.TextField(blank=False)
-    pub_date = models.DateTimeField(_('published date'))
+    pub_date = models.DateTimeField(_('published date'), default=datetime.datetime.now())
     votes = models.IntegerField(default=0)
     
     objects = FortuneManager()
@@ -24,3 +27,9 @@ class Fortune(models.Model):
             'month': self.pub_date.month,
             'day': self.pub_date.day
         })
+
+    def save(self): 
+        # add slug if there isn't one already 
+        if not self.slug: 
+            self.slug = slugify(self.title)
+        super(Fortune, self).save() 
