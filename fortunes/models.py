@@ -13,12 +13,12 @@ class Fortune(models.Model):
     content = models.TextField(blank=False)
     pub_date = models.DateTimeField(_('published date'), default=datetime.datetime.now())
     votes = models.IntegerField(default=0)
-    
+
     objects = FortuneManager()
-    
+
     def __unicode__(self):
         return _("%s, from %s") % (self.title, self.author)
-    
+
     @models.permalink
     def get_absolute_url(self):
         return ('fortune_detail', (), {
@@ -28,8 +28,8 @@ class Fortune(models.Model):
             'day': self.pub_date.day
         })
 
-    def save(self): 
-        # add slug if there isn't one already 
-        if not self.slug: 
-            self.slug = slugify(self.title)
-        super(Fortune, self).save() 
+    def save(self):
+        super(Fortune, self).save()
+        if self.id and not self.slug:
+            self.slug = str(self.id) + '-' + slugify(self.title)
+            super(Fortune, self).save()
