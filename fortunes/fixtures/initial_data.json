@@ -23,6 +23,18 @@
     }
 },
 {
+    "pk": 3,
+    "model": "fortunes.fortune",
+    "fields": {
+        "content": "<john> boo!\n<bob> wow.",
+        "votes": 0,
+        "title": "A funny one",
+        "slug": "a-funny-one",
+        "pub_date": "2009-12-03 20:33:12",
+        "author": "NiKo"
+    }
+},
+{
     "pk": 1,
     "model": "comments.comment",
     "fields": {
