@@ -8,6 +8,7 @@ class FortuneExtraTest(TestCase):
         from django_fortunes.templatetags.fortune_extras import fortunize
         self.assertEquals(fortunize(u'<niko> foo'), u'<dl><dt class="odd">&lt;niko&gt;</dt><dd><q>foo</q></dd>\n</dl>')
         self.assertEquals(fortunize(u'<niko> foo\n<david> bar'), u'<dl><dt class="odd">&lt;niko&gt;</dt><dd><q>foo</q></dd>\n<dt class="even">&lt;david&gt;</dt><dd><q>bar</q></dd>\n</dl>')
+        self.assertEquals(fortunize(u'<script>foo</script>'), u'<dl><dt class="odd">&lt;script&gt;</dt><dd><q>foo&lt;/script&gt;</q></dd>\n</dl>')
 
 class FortuneModelTest(TransactionTestCase):
     def create(self, title, author='Anon', content='', pub_date=datetime.now()):
