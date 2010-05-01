@@ -16,22 +16,20 @@
 {% endif %}
 </section>
 
-{% if has_previous or has_next %}
+{% if page_obj.has_previous or page_obj.has_next %}
 <nav class="pagination">
     <ul>
-        {% if has_previous %}
+        {% if page_obj.has_previous %}
         <li>
             <a href="{% url fortune_index_type order_type page_obj.previous_page_number %}">&laquo; {% trans "previous" %}</a>
         </li>
         {% endif %}
         <li>
-            {% blocktrans with page_obj.number as number and paginator.num_pages as num_pages %}
-                Page {{ page_obj }} of {{ num_pages }}
-            {% endblocktrans %}
+            {% blocktrans with page_obj.number as current_page and page_obj.paginator.num_pages as num_pages %}Page {{ current_page }} of {{ num_pages }}.{% endblocktrans %}
         </li>
-        {% if has_next %}
+        {% if page_obj.has_next %}
         <li>
-            <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a> 
+            <a href="{% url fortune_index_type order_type page_obj.next_page_number %}">{% trans "next" %} &raquo;</a> 
         </li>
         {% endif %}
     </ul>

@@ -12,39 +12,20 @@
     <body id="djortunes">
         <header>
             <h1>
-                <a href="{% url fortune_index %}">Fortunes</a>
+                <a href="{% url fortune_index %}">
+                    {% block site_title %}{% trans "Fortunes" %}{% endblock %}
+                </a>
             </h1>
             <p>
-                <small>{% trans "When it's funny, it's quoted™" %}</small>
+                <small>
+                    {% block site_slogan %}{% trans "When it's funny, it's quoted™" %}{% endblock %}
+                </small>
             </p>
             <nav id="menu">
                 {% block navigation %}
-                <ul>
-                    <li class="{% ifequal order_type "default" %}active{% endifequal %}">
-                        <a href="{% url fortune_index %}">
-                            {% trans "Latest" %}
-                            <small>{% trans "Recently added quotes" %}</small>
-                        </a>
-                    </li>
-                    <li class="{% ifequal order_type "top" %}active{% endifequal %}">
-                        <a href="{% url fortune_index_type "top" %}">
-                            {% trans "Top" %}
-                            <small>{% trans "Top rated quotes" %}</small>
-                        </a>
-                    </li>
-                    <li class="{% ifequal order_type "worst" %}active{% endifequal %}">
-                        <a href="{% url fortune_index_type "worst" %}">
-                            {% trans "Worst" %}
-                            <small>{% trans "Badly rated quotes" %}</small>
-                        </a>
-                    </li>
-                    <li class="{% ifequal section "new" %}active{% endifequal %}">
-                        <a href="{% url fortune_new %}">
-                            {% trans "Add" %}
-                            <small>{% trans "Add your own quote!" %}</small>
-                        </a>
-                    </li>
-                </ul>
+                    {% with order_type as section %}
+                        {% include "partials/navigation.html" %}
+                    {% endwith %}
                 {% endblock %}
             </nav>
         </header>
@@ -60,14 +41,10 @@
                     {% block about %}
                     <h2>{% trans "About" %}</h2>
                     <p>
-                        {% blocktrans %}
-                        Fortunes is a repository of quotes. You can create an account to 
-                        add your own, or get the source to install it on your own server.
-                        {% endblocktrans %}
+                        {% blocktrans %}Fortunes is a repository of quotes. You can create an account to add your own, or get the source to install it on your own server.{% endblocktrans %}
                     </p>
                     {% endblock about %}
                     {% block contributors %}
-                        <h2>{% trans "Top contributors" %}</h2>
                         {% top_contributors %}
                     {% endblock contributors %}
                 </div>

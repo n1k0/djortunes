@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-01 16:04+0200\n"
+"POT-Creation-Date: 2010-05-01 18:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,29 +36,26 @@ msgstr "Commentaires"
 
 #: templates/detail.html:23
 #, python-format
-msgid ""
-"\n"
-"                            Posted by %(user_name)s %(submit_date)s ago\n"
-"                        "
-msgstr ""
+msgid "Posted by %(user_name)s %(submit_date)s ago"
+msgstr "Postée par %(user_name)s il y a %(submit_date)s"
 
-#: templates/detail.html:30
+#: templates/detail.html:28
 msgid "No comment yet"
 msgstr "Aucune commentaire"
 
-#: templates/detail.html:43
+#: templates/detail.html:41
 msgid "Submit"
 msgstr "Envoyer"
 
-#: templates/detail.html:53
+#: templates/detail.html:51
 msgid "Back to"
 msgstr "Retour à"
 
-#: templates/detail.html:53 templates/index.html:4
+#: templates/detail.html:51 templates/index.html:4
 msgid "Fortunes list"
 msgstr "la liste des Fortunes"
 
-#: templates/detail.html:54
+#: templates/detail.html:52
 msgid "Add a new fortune"
 msgstr "Ajouter une fortune"
 
@@ -72,13 +69,10 @@ msgstr "précédente"
 
 #: templates/index.html:28
 #, python-format
-msgid ""
-"\n"
-"                Page %(page_obj)s of %(num_pages)s\n"
-"            "
-msgstr ""
+msgid "Page %(current_page)s of %(num_pages)s."
+msgstr "Page %(current_page)s sur %(num_pages)s."
 
-#: templates/index.html:34
+#: templates/index.html:32
 msgid "next"
 msgstr "suivante"
 
@@ -88,20 +82,50 @@ msgstr "Ajouter une fortune"
 
 #: templates/partials/fortune.html:13
 #, python-format
-msgid ""
-"\n"
-"                Posted by <strong>%(author)s</strong> %(pub_date)s ago. \n"
-"            "
-msgstr ""
+msgid "Posted by <strong>%(author)s</strong> %(pub_date)s ago."
+msgstr "Postée par <strong>%(author)s</strong> il y a %(pub_date)s."
 
-#: templates/partials/fortune.html:17
+#: templates/partials/fortune.html:15
 #, python-format
-msgid ""
-"\n"
-"                    %(votes)s votes\n"
-"                "
-msgstr ""
+msgid "%(votes)s votes"
+msgstr "%(votes)s votes"
 
-#: templates/partials/topcontributors.html:14
+#: templates/partials/navigation.html:6
+msgid "Latest"
+msgstr "Récentes"
+
+#: templates/partials/navigation.html:7
+msgid "Recently added quotes"
+msgstr "Dernières fortunes"
+
+#: templates/partials/navigation.html:12
+msgid "Top"
+msgstr "Top"
+
+#: templates/partials/navigation.html:13
+msgid "Top rated quotes"
+msgstr "Les meilleures"
+
+#: templates/partials/navigation.html:18
+msgid "Worst"
+msgstr "Flop"
+
+#: templates/partials/navigation.html:19
+msgid "Badly rated quotes"
+msgstr "Les pires"
+
+#: templates/partials/navigation.html:24
+msgid "Add"
+msgstr "Ajouter"
+
+#: templates/partials/navigation.html:25
+msgid "Add your own quote!"
+msgstr "Ajouter une fortune !"
+
+#: templates/partials/topcontributors.html:3
+msgid "Top contributors"
+msgstr "Meilleurs contributeurs"
+
+#: templates/partials/topcontributors.html:15
 msgid "No author yet"
 msgstr "Pas de contributeurs"

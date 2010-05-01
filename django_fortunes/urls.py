@@ -19,7 +19,7 @@ urlpatterns = patterns('',
         fortune_list,
         name='fortune_index_author'),
 
-    url(r'^(?P<order_type>(top|worst)?)/(?P<page>\w)?$',
+    url(r'^(?P<order_type>(top|worst|latest)?)/(?P<page>\d)?$',
         fortune_list,
         name='fortune_index_type'),
     

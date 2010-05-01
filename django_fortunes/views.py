@@ -28,7 +28,7 @@ def fortune_detail(request, year, month, day, slug,
       **kwargs
     )
 
-def fortune_list(request, order_type='default', author=None, template_name='index.html',
+def fortune_list(request, order_type='latest', author=None, template_name='index.html',
                  template_object_name='fortune', **kwargs):
     '''
     Lists Fortunes
@@ -41,11 +41,12 @@ def fortune_list(request, order_type='default', author=None, template_name='inde
     
     # Ordering
     if order_type == 'top':
-        queryset.order_by('-votes')
+        queryset = queryset.order_by('-votes')
     elif order_type == 'worst':
-        queryset.order_by('votes')
+        queryset = queryset.order_by('votes')
     else:
-        queryset.order_by('-pub_date')
+        # latest
+        queryset = queryset.order_by('-pub_date')
     
     return list_detail.object_list(
       request,

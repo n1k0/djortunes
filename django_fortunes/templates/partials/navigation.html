@@ -1,0 +1,28 @@
+{% load fortune_extras i18n %}
+
+<ul>
+    <li class="{% ifequal section "latest" %}active{% endifequal %}">
+        <a href="{% url fortune_index %}">
+            {% trans "Latest" %}
+            <small>{% trans "Recently added quotes" %}</small>
+        </a>
+    </li>
+    <li class="{% ifequal section "top" %}active{% endifequal %}">
+        <a href="{% url fortune_index_type "top" %}">
+            {% trans "Top" %}
+            <small>{% trans "Top rated quotes" %}</small>
+        </a>
+    </li>
+    <li class="{% ifequal section "worst" %}active{% endifequal %}">
+        <a href="{% url fortune_index_type "worst" %}">
+            {% trans "Worst" %}
+            <small>{% trans "Badly rated quotes" %}</small>
+        </a>
+    </li>
+    <li class="{% ifequal section "new" %}active{% endifequal %}">
+        <a href="{% url fortune_new %}">
+            {% trans "Add" %}
+            <small>{% trans "Add your own quote!" %}</small>
+        </a>
+    </li>
+</ul>

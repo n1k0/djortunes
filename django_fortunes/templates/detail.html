@@ -20,9 +20,7 @@
                         {{ comment.comment }}
                     </blockquote>
                     <p>
-                        {% blocktrans with comment.user_name as user_name and comment.submit_date|timesince as submit_date %}
-                            Posted by {{ user_name }} {{ submit_date }} ago
-                        {% endblocktrans %}
+                        {% blocktrans with comment.user_name as user_name and comment.submit_date|timesince as submit_date %}Posted by {{ user_name }} {{ submit_date }} ago{% endblocktrans %}
                     </p>
                 </article>
                 {% endfor %}
