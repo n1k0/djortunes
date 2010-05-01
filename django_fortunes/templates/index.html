@@ -3,11 +3,11 @@
 
 {% block title %}{% trans "Fortunes list" %}{% endblock %}
 
-{% if author %}
-    {% block extra_head %}
+{% block extra_head %}
+    {% if author %}
         <link rel="alternate" type="application/rss+xml" name="RSS" href="/feeds/author/{{ author }}"/>
-    {% endblock %}
-{% endif %}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 <section id="fortunes">
