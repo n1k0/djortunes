@@ -25,7 +25,7 @@ def fortunize(value):
                 quote = escape(match[1])
                 r += "<dt class=\"%s\">&lt;%s&gt;</dt><dd><q>%s</q></dd>\n" % (className, nick, quote)
         else:
-            r += "<dt>&nbsp;</dt><dd>%s</dd>\n" % (line)
+            r += "<dt>&nbsp;</dt><dd>%s</dd>\n" % (escape(line))
     return "<dl>%s</dl>" % r
 
 @register.inclusion_tag('partials/topcontributors.html')

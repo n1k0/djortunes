@@ -20,7 +20,10 @@ class Fortune(models.Model):
         return _("%s, from %s") % (self.title, self.author)
 
     def check_slug(self):
-        "If no slug has been generated yet, tries to generate a unique one"
+        """
+        If no slug has been generated yet for the current Fortune, tries to generate a 
+        unique one
+        """
         if not self.slug:
             prefix = ""
             i = 0
@@ -36,6 +39,7 @@ class Fortune(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
+        "Retrieves the absolute django url of a fortune"
         return ('fortune_detail', (), {
             'slug': self.slug,
             'year': self.pub_date.year,
@@ -44,5 +48,6 @@ class Fortune(models.Model):
         })
 
     def save(self):
+        "Saves a fortune after havng checked and generated its slug"
         self.check_slug()
         super(Fortune, self).save()
