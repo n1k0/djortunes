@@ -4,8 +4,8 @@ from django.conf import settings
 from django.views.generic import date_based, list_detail
 from django.template import RequestContext
 
-from djortunes.fortunes.models import Fortune
-from djortunes.fortunes.forms import PublicFortuneForm
+from django_fortunes.models import Fortune
+from django_fortunes.forms import PublicFortuneForm
 
 def fortune_detail(request, year, month, day, slug,
                    template_name='detail.html', template_object_name='fortune',

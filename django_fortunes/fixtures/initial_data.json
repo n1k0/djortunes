@@ -1,6 +1,6 @@
 [{
     "pk": 1,
-    "model": "fortunes.fortune",
+    "model": "django_fortunes.fortune",
     "fields": {
         "content": "<niko> Yeah\r\n<dude> Sure",
         "votes": 0,
@@ -12,7 +12,7 @@
 },
 {
     "pk": 2,
-    "model": "fortunes.fortune",
+    "model": "django_fortunes.fortune",
     "fields": {
         "content": "<dude> Wow\r\n<niko> Sure",
         "votes": 0,
@@ -24,7 +24,7 @@
 },
 {
     "pk": 3,
-    "model": "fortunes.fortune",
+    "model": "django_fortunes.fortune",
     "fields": {
         "content": "<john> boo!\n<bob> wow.",
         "votes": 0,

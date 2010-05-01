@@ -1,11 +1,11 @@
 import unittest
 from django.test.testcases import TestCase, TransactionTestCase
 from datetime import datetime
-from djortunes.fortunes.models import Fortune
+from django_fortunes.models import Fortune
 
 class FortuneExtraTest(TestCase):
     def test_fortunize(self):
-        from djortunes.fortunes.templatetags.fortune_extras import fortunize
+        from django_fortunes.templatetags.fortune_extras import fortunize
         self.assertEquals(fortunize(u'<niko> foo'), u'<dl><dt class="odd">&lt;niko&gt;</dt><dd><q>foo</q></dd>\n</dl>')
         self.assertEquals(fortunize(u'<niko> foo\n<david> bar'), u'<dl><dt class="odd">&lt;niko&gt;</dt><dd><q>foo</q></dd>\n<dt class="even">&lt;david&gt;</dt><dd><q>bar</q></dd>\n</dl>')
 

@@ -5,7 +5,7 @@ from django.template.defaultfilters import stringfilter
 from django.utils.html import escape
 from django.conf import settings
 
-from djortunes.fortunes.models import Fortune
+from django_fortunes.models import Fortune
 
 register = template.Library()
 

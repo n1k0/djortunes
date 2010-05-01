@@ -1,4 +1,4 @@
-from fortunes.models import Fortune
+from django_fortunes.models import Fortune
 from django.contrib import admin
 
 class FortuneAdmin(admin.ModelAdmin):

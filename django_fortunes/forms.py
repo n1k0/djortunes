@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from djortunes.fortunes.models import Fortune
+from django_fortunes.models import Fortune
 
 class FortuneForm(ModelForm):
     class Meta:

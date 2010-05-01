@@ -1,8 +1,8 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 
-from fortunes.views import fortune_list, fortune_detail, \
-                           fortune_vote, fortune_new
+from django_fortunes.views import fortune_list, fortune_detail, \
+                                  fortune_vote, fortune_new
 
 urlpatterns = patterns('',
     url(r'^$',

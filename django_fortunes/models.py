@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
-from fortunes.managers import FortuneManager
+from django_fortunes.managers import FortuneManager
 
 class Fortune(models.Model):
     author = models.CharField(max_length=45, blank=False)

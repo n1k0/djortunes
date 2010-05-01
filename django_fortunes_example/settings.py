@@ -1,4 +1,5 @@
-# Django settings for djortunes project.
+# Django settings for django_fortunes_example project.
+# These are sample settings provided as an example, do not use in production!
 
 import os
 
@@ -8,7 +9,7 @@ TEMPLATE_DEBUG = DEBUG
 PROJECT_ROOT = os.path.dirname(__file__)
 
 ADMINS = (
-    ('niko', 'niko@domain.com'),
+    ('foo', 'foo@domain.tld'),
 )
 
 MANAGERS = ADMINS
@@ -58,7 +59,7 @@ MEDIA_URL = '/site_media/'
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'q=f&hd7g%se-j5jcu4=)*%6dm@x5+%-(9($5a$aw-1r$w1ze(y'
+SECRET_KEY = '<please insert random characters here; seriously, do it.>'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -83,7 +84,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'djortunes.urls'
+ROOT_URLCONF = 'django_fortunes_example.urls'
 
 TEMPLATE_DIRS = (
     [os.path.join(PROJECT_ROOT, 'templates')]
@@ -96,5 +97,5 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.sites',
     'django.contrib.admin',
-    'djortunes.fortunes',
+    'django_fortunes_example.django_fortunes',
 )
