@@ -35,11 +35,7 @@ urlpatterns = patterns('',
         fortune_vote,
         name='fortune_vote'),
     
-    url(r'^feeds/latest/$', 
-        LatestFortunes(), 
-        name='fortune_feed_latest'),
-    
-    url(r'^feeds/author/(?P<author>\w+)/$', 
-        LatestFortunesByAuthor(), 
-        name='fortune_feed_author'),
+    (r'^feeds/(?P<url>.*)/$',
+     'django.contrib.syndication.views.feed',
+     {'feed_dict': feeds}),
 )

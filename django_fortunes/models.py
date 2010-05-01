@@ -17,14 +17,14 @@ class Fortune(models.Model):
     objects = FortuneManager()
 
     def __unicode__(self):
-        return _("%(title)s, from %(author)s") % { 
+        return _("%(title)s, from %(author)s") % {
             'title': self.title,
-            'author': self.author ,
+            'author': self.author,
         }
 
     def check_slug(self):
         """
-        If no slug has been generated yet for the current Fortune, tries to generate a 
+        If no slug has been generated yet for the current Fortune, tries to generate a
         unique one
         """
         if not self.slug:
@@ -33,7 +33,7 @@ class Fortune(models.Model):
             while True:
                 self.slug = prefix + slugify(self.title)
                 try:
-                    Fortune.objects.values('id').get(slug=self.slug)
+                    self.objects.values('id').get(slug=self.slug)
                     i += 1
                     prefix = str(i) + "-"
                 except Fortune.DoesNotExist:

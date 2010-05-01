@@ -1,12 +1,16 @@
-from django.contrib.syndication.views import Feed
+from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
+from django.contrib.sites.models import Site
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.conf import settings
+from django.core.urlresolvers import reverse
+
 from django_fortunes.models import Fortune
 from django_fortunes.templatetags.fortune_extras import fortunize
 
 class FortuneFeed(Feed):
     author_name = 'The django_fortunes application'
-    link = 'http://github.com/n1k0/djortunes'
+    _site = Site.objects.get_current()
     manager = Fortune.objects
 
     def item_author_name(self, item):
@@ -26,16 +30,31 @@ class FortuneFeed(Feed):
 
 class LatestFortunes(FortuneFeed):
     title = "Latest fortunes"
-    link = "/fortunes/"
     description = "Latest fortunes added."
 
     def items(self):
-        return self.manager.latest(getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5))
+        return self.manager.latest()
+
+    def link(self, obj):
+        return reverse('fortune_index_type', kwargs={'order_type': 'latest'})
 
 class LatestFortunesByAuthor(FortuneFeed):
-    title = "Latest fortunes by XXX"
-    link = "/fortunes/"
-    description = "Latest fortunes added by XXX."
+    def get_object(self, bits):
+        ''' Retrieve simple param in url, waiting for authenticated user '''
+        if len(bits) != 1:
+            raise ObjectDoesNotExist
+        return bits[0]
 
-    def items(self):
-        return self.manager.latest_by_author('XXX', getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5))
+    def title(self, obj):
+        return "Latest fortunes by %s" % obj
+
+    def link(self, obj):
+        if not obj:
+            raise FeedDoesNotExist
+        return reverse('fortune_index_author', kwargs={'author': obj})
+
+    def description(self, obj):
+        return "Latest fortunes added by %s." % obj
+
+    def items(self, obj):
+        return self.manager.latest_by_author(obj)[:getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5)]

@@ -3,6 +3,12 @@
 
 {% block title %}{% trans "Fortunes list" %}{% endblock %}
 
+{% if author %}
+    {% block extra_head %}
+        <link rel="alternate" type="application/rss+xml" name="RSS" href="/feeds/author/{{ author }}"/>
+    {% endblock %}
+{% endif %}
+
 {% block content %}
 <section id="fortunes">
 {% if fortune_list %}
@@ -29,7 +35,7 @@
         </li>
         {% if page_obj.has_next %}
         <li>
-            <a href="{% url fortune_index_type order_type page_obj.next_page_number %}">{% trans "next" %} &raquo;</a> 
+            <a href="{% url fortune_index_type order_type page_obj.next_page_number %}">{% trans "next" %} &raquo;</a>
         </li>
         {% endif %}
     </ul>
