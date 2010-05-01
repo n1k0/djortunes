@@ -9,10 +9,10 @@ class FortuneManagerTest(FortuneTransactionTestCase):
     def test_latest(self):
         latest = Fortune.objects.latest()
         self.assertEqual(len(latest), 3)
-        self.assertEqual(latest[0].author, 'NiKo')
-        self.assertEqual(latest[0].title, u'A funny one')
-        self.assertEqual(latest[1].author, 'Dude')
-        self.assertEqual(latest[1].title, u'Another One')
+        self.assertEqual(latest[0].author, 'Dude')
+        self.assertEqual(latest[0].title, u'Another One')
+        self.assertEqual(latest[1].author, 'NiKo')
+        self.assertEqual(latest[1].title, u'A funny one')
         self.assertEqual(latest[2].author, 'NiKo')
         self.assertEqual(latest[2].title, u'My first fortune')
     

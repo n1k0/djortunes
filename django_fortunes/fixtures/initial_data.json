@@ -3,10 +3,10 @@
     "model": "django_fortunes.fortune",
     "fields": {
         "content": "<niko> Yeah\r\n<dude> Sure",
-        "votes": 0,
+        "votes": 2,
         "title": "My first fortune",
         "slug": "my-first-fortune",
-        "pub_date": "2009-11-03 09:30:07",
+        "pub_date": "2010-01-01 00:00:00",
         "author": "NiKo"
     }
 },
@@ -15,10 +15,10 @@
     "model": "django_fortunes.fortune",
     "fields": {
         "content": "<dude> Wow\r\n<niko> Sure",
-        "votes": 0,
+        "votes": 1,
         "title": "Another One",
         "slug": "another-one",
-        "pub_date": "2009-11-03 09:30:29",
+        "pub_date": "2010-03-01 00:00:00",
         "author": "Dude"
     }
 },
@@ -27,10 +27,10 @@
     "model": "django_fortunes.fortune",
     "fields": {
         "content": "<john> boo!\n<bob> wow.",
-        "votes": 0,
+        "votes": 3,
         "title": "A funny one",
         "slug": "a-funny-one",
-        "pub_date": "2009-12-03 20:33:12",
+        "pub_date": "2010-02-01 00:00:00",
         "author": "NiKo"
     }
 },

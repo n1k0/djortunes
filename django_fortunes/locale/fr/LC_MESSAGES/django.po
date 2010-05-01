@@ -37,11 +37,11 @@ msgstr "Commentaires"
 #: templates/detail.html:23
 #, python-format
 msgid "Posted by %(user_name)s %(submit_date)s ago"
-msgstr "Postée par %(user_name)s il y a %(submit_date)s"
+msgstr "Posté par %(user_name)s il y a %(submit_date)s"
 
 #: templates/detail.html:28
 msgid "No comment yet"
-msgstr "Aucune commentaire"
+msgstr "Aucun commentaire"
 
 #: templates/detail.html:41
 msgid "Submit"
@@ -83,7 +83,7 @@ msgstr "Ajouter une fortune"
 #: templates/partials/fortune.html:13
 #, python-format
 msgid "Posted by <strong>%(author)s</strong> %(pub_date)s ago."
-msgstr "Postée par <strong>%(author)s</strong> il y a %(pub_date)s."
+msgstr "Posté par <strong>%(author)s</strong> il y a %(pub_date)s."
 
 #: templates/partials/fortune.html:15
 #, python-format

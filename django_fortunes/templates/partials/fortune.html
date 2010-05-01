@@ -1,4 +1,4 @@
-{% load fortune_extras i18n %}
+{% load fortune_extras i18n comments %}
 
 <article class="fortune" id="fortune_{{ fortune.pk }}">
     <h2>
@@ -10,12 +10,17 @@
     </blockquote>
     <aside>
         <p class="fortune-infos">
-            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <strong>{{ author }}</strong> {{ pub_date }} ago.{% endblocktrans %}
+            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <strong>{{ author }}</strong> {{ pub_date }} ago.{% endblocktrans %} |
             <span class="fortune-actions">
                 <strong>{% blocktrans with fortune.votes as votes %}{{ votes }} votes{% endblocktrans %}</strong>
                 <a href="{% url fortune_vote fortune.pk "down" %}" title="Vote down this fortune">-</a> / 
                 <a href="{% url fortune_vote fortune.pk "up" %}" title="Vote up this fortune">+</a> 
             </span>
+            {% get_comment_count for fortune as comment_count %}
+            |
+            <a href="{{ fortune.get_absolute_url }}#comments">
+                {% blocktrans %}{{ comment_count }} comments{% endblocktrans %}
+            </a>
         </p>
     </aside>
 </article>

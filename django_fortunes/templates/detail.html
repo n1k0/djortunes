@@ -2,15 +2,15 @@
 
 {% load i18n comments %}
 
-{% block title %}Fortune #{{ fortune.id }}{% endblock %}
+{% block title %}Fortune #{{ fortune.id }} - {{ fortune.title }} ({{ fortune.author }}){% endblock %}
 
 {% block content %}
     {% with fortune as fortune %}
         {% include "partials/fortune.html" %}
     {% endwith %}
-    
+
     <section class="fortune-comments">
-        <div class="comments-block">
+        <div class="comments-block" id="comments">
             <h3>{% trans "Comments" %}</h3>
             {% get_comment_list for fortune as comments %}
             {% if comments %}
@@ -20,6 +20,7 @@
                         {{ comment.comment }}
                     </blockquote>
                     <p>
+                        <a href="{{ fortune.get_absolute_url }}#c_{{ comment.id }}" title="{% trans "Comment permalink" %}">#{{ forloop.counter }}.</a>
                         {% blocktrans with comment.user_name as user_name and comment.submit_date|timesince as submit_date %}Posted by {{ user_name }} {{ submit_date }} ago{% endblocktrans %}
                     </p>
                 </article>
@@ -29,22 +30,25 @@
             {% endif %}
         </div>
     </section>
-    
+
     <section class="fortune-comment-form">
-        {% get_comment_form for fortune as form %}
-        <table>
+        <div class="comments-block"
+            <h3>{% trans "Add a comment" %}</h3>
+            {% get_comment_form for fortune as form %}
             <form action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
-                {{ form }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" class="submit-post" value="{% trans "Submit" %}"></td>
-                    <input type="hidden" name="next" value="{{ fortune.get_absolute_url }}" />
-                </tr>
+                <input type="hidden" name="next" value="{{ fortune.get_absolute_url }}" />
+                <table>
+                    {{ form }}
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit" class="submit-post" value="{% trans "Submit" %}"></td>
+                    </tr>
+                </table>
             </form>
-        </table>
+        </div>
     </section>
-    
+
     <aside class="fortune-context-actions">
         <nav>
             <p>

@@ -1,38 +1,48 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Fortunes list" %}{% endblock %}
+{% block title %}
+    {% if order_type == 'top' %}
+        {% trans "Top Fortunes" %}
+    {% else %}
+        {% if order_type == 'worst' %}
+            {% trans "Worst Fortunes" %}        
+        {% else %}
+            {% trans "Latest Fortunes" %}
+        {% endif %}            
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-<section id="fortunes">
-{% if fortune_list %}
-{% for fortune in fortune_list %}
-    {% with fortune as fortune %}
-        {% include "partials/fortune.html" %}
-    {% endwith %}
-{% endfor %}
-{% else %}
-    <p>{% trans "No fortune found mathing your request." %}</p>
-{% endif %}
-</section>
+    <section id="fortunes">
+    {% if fortune_list %}
+    {% for fortune in fortune_list %}
+        {% with fortune as fortune %}
+            {% include "partials/fortune.html" %}
+        {% endwith %}
+    {% endfor %}
+    {% else %}
+        <p>{% trans "No fortune found mathing your request." %}</p>
+    {% endif %}
+    </section>
 
-{% if page_obj.has_previous or page_obj.has_next %}
-<nav class="pagination">
-    <ul>
-        {% if page_obj.has_previous %}
-        <li>
-            <a href="{% url fortune_index_type order_type page_obj.previous_page_number %}">&laquo; {% trans "previous" %}</a>
-        </li>
-        {% endif %}
-        <li>
-            {% blocktrans with page_obj.number as current_page and page_obj.paginator.num_pages as num_pages %}Page {{ current_page }} of {{ num_pages }}.{% endblocktrans %}
-        </li>
-        {% if page_obj.has_next %}
-        <li>
-            <a href="{% url fortune_index_type order_type page_obj.next_page_number %}">{% trans "next" %} &raquo;</a> 
-        </li>
-        {% endif %}
-    </ul>
-</nav>
-{% endif %}
+    {% if page_obj.has_previous or page_obj.has_next %}
+    <nav class="pagination">
+        <ul>
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="{% url fortune_index_type order_type page_obj.previous_page_number %}">&laquo; {% trans "previous" %}</a>
+            </li>
+            {% endif %}
+            <li>
+                {% blocktrans with page_obj.number as current_page and page_obj.paginator.num_pages as num_pages %}Page {{ current_page }} of {{ num_pages }}.{% endblocktrans %}
+            </li>
+            {% if page_obj.has_next %}
+            <li>
+                <a href="{% url fortune_index_type order_type page_obj.next_page_number %}">{% trans "next" %} &raquo;</a> 
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 {% endblock content %}
