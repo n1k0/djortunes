@@ -12,7 +12,7 @@ If you're curious enough, you might check out the [Symfony version of this app](
 Prerequisites
 -------------
 
-Django 1.1+
+Django 1.2-DEV or more recent
 
 Installation
 ------------

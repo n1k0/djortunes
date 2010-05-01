@@ -7,6 +7,7 @@
         <title>{% block title %}{% endblock %} - Djortunes</title>
         <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/screen.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/Andika-Basic-fontfacekit/stylesheet.css" />
+        <link rel="alternate" type="application/rss+xml" name="RSS" href="{% url fortune_feed_latest %}"/> 
     </head>
     <body id="djortunes">
         <header>

@@ -3,7 +3,11 @@
 {% if authors %}
     <ol>
         {% for author in authors %}
-        <li>{{ author.author }} ({{ author.nb }})</li>
+        <li>
+            <a href="{% url fortune_index_author author.author %}">
+                {{ author.author }}
+            </a> ({{ author.nb }})
+        </li>
         {% endfor %}
     </ol>
 {% else %}
