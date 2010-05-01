@@ -1,7 +1,7 @@
-Djortunes
-=========
+Djortunes (`django_fortunes` app)
+=================================
 
-Django application to store fortunes (snippets of quotes, eg. IRC/IM ones). Originally inspired by the « [Fortunes](http://fortunes.inertie.org/) » application, by [Maurice Svay](http://svay.com/).
+`django_fortunes`'s a [Django](http://www.djangoproject.com/) application to store fortunes (snippets of quotes, eg. IRC/IM ones). Originally inspired by the « [Fortunes](http://fortunes.inertie.org/) » application, by [Maurice Svay](http://svay.com/).
 
 ![screenshot](http://files.droplr.com/files/6619162/RKP6D.djortunes.png "Example app screen")
 
@@ -18,6 +18,17 @@ Installation
 ------------
 
 For the moment Djortunes is proposed as a standalone Django project; as soon as possible, it will ship as a standalone application.
+
+Configuration
+-------------
+
+Several settings are available in the `django_fortunes` application, and you can override their defaults in your project's `settings.py` configuration file:
+
+    # Maximum number of fortunes to be shown in lists
+    FORTUNES_MAX_PER_PAGE = 10
+
+    # Maximum number of top fortune authors to display in the sidebar
+    FORTUNES_MAX_TOP_CONTRIBUTORS = 5
 
 License
 -------

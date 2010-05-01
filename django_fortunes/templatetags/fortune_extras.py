@@ -33,5 +33,5 @@ def top_contributors():
     """
     Displays the list of MAX_TOP_CONTRIBUTORS top contributors
     """
-    max = getattr(settings, 'MAX_TOP_CONTRIBUTORS', 5)
+    max = getattr(settings, 'FORTUNES_MAX_TOP_CONTRIBUTORS', 5)
     return {'authors': Fortune.objects.top_authors()[:max]}

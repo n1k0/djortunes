@@ -17,7 +17,10 @@ class Fortune(models.Model):
     objects = FortuneManager()
 
     def __unicode__(self):
-        return _("%s, from %s") % (self.title, self.author)
+        return _("%(title)s, from %(author)s") % { 
+            'title': self.title,
+            'author': self.author ,
+        }
 
     def check_slug(self):
         """

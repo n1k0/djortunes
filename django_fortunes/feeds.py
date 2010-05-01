@@ -1,5 +1,6 @@
 from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
+from django.conf import settings
 from django_fortunes.models import Fortune
 from django_fortunes.templatetags.fortune_extras import fortunize
 
@@ -29,7 +30,7 @@ class LatestFortunes(FortuneFeed):
     description = "Latest fortunes added."
 
     def items(self):
-        return self.manager.latest(5)
+        return self.manager.latest(getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5))
 
 class LatestFortunesByAuthor(FortuneFeed):
     title = "Latest fortunes by XXX"
@@ -37,4 +38,4 @@ class LatestFortunesByAuthor(FortuneFeed):
     description = "Latest fortunes added by XXX."
 
     def items(self):
-        return self.manager.latest_by_author('XXX', 5)
+        return self.manager.latest_by_author('XXX', getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5))
