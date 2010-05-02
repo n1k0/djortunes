@@ -1,6 +1,7 @@
 import unittest
-from utils import FortuneTransactionTestCase
+import time
 
+from utils import FortuneTransactionTestCase
 from datetime import datetime
 from django.test.testcases import TestCase, TransactionTestCase
 from django_fortunes.models import Fortune
@@ -23,6 +24,13 @@ class FortuneManagerTest(FortuneTransactionTestCase):
         self.assertEqual(latest_from_niko[0].title, u'A funny one')
         self.assertEqual(latest_from_niko[1].author, 'NiKo')
         self.assertEqual(latest_from_niko[1].title, u'My first fortune')
+    
+    def test_published(self):
+        latest = Fortune.objects.published()
+        self.assertEqual(len(latest), 3)
+        f = self.create('foo', content='bar', pub_date=datetime.fromtimestamp(time.time() + 86400))
+        new_latest = Fortune.objects.published()
+        self.assertEqual(len(new_latest), 3)
 
     def test_top_authors(self):
         top_authors = Fortune.objects.top_authors()

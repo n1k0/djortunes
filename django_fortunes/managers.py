@@ -1,6 +1,7 @@
 import datetime
 
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
 
 class FortuneManager(models.Manager):
     def latest(self):

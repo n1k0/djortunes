@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django.db import models
+from django.contrib.contenttypes import generic
+from django.contrib.comments.models import Comment
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
@@ -11,20 +13,25 @@ class Fortune(models.Model):
     title = models.CharField(max_length=200, blank=False)
     slug = models.SlugField(_('slug'), db_index=True, max_length=255, unique_for_date='pub_date')
     content = models.TextField(blank=False)
-    pub_date = models.DateTimeField(_('published date'), default=datetime.now())
+    pub_date = models.DateTimeField(_('published date'), db_index=True, default=datetime.now())
     votes = models.IntegerField(default=0)
+    comments = generic.GenericRelation(
+        Comment,
+        content_type_field='content_type',
+        object_id_field='object_pk'
+    )
 
     objects = FortuneManager()
 
     def __unicode__(self):
-        return _("%(title)s, from %(author)s") % { 
+        return _("%(title)s, from %(author)s") % {
             'title': self.title,
             'author': self.author ,
         }
 
     def check_slug(self):
         """
-        If no slug has been generated yet for the current Fortune, tries to generate a 
+        If no slug has been generated yet for the current Fortune, tries to generate a
         unique one
         """
         if not self.slug:

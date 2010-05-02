@@ -19,8 +19,8 @@
                     {% blocktrans count fortune.votes as votes %}One vote{% plural %}{{ votes }} votes{% endblocktrans %}
                     {% endif %}
                 </strong>
-                <a href="{% url fortune_vote fortune.pk "down" %}" title="Vote down this fortune">-</a> / 
-                <a href="{% url fortune_vote fortune.pk "up" %}" title="Vote up this fortune">+</a> 
+                <a href="{% url fortune_vote fortune.pk "down" %}" title="{% trans "Vote down this fortune" %}">-</a> / 
+                <a href="{% url fortune_vote fortune.pk "up" %}" title="{% trans "Vote up this fortune" %}">+</a> 
             </span>
             {% get_comment_count for fortune as comment_count %}
             |

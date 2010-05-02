@@ -5,13 +5,26 @@
 {% block title %}{% trans "Add a fortune" %}{% endblock %}
 
 {% block content %}
+    <h2>{% trans "Add a fortune" %}</h2>
+    <p>
+        {% trans "Add a quote in the form below using this syntax:" %}
+    </p>
+    <pre>
+        &lt;author1&gt; quote line one
+        &lt;author2&gt; quote line 2
+        Sentence in between
+        &lt;author1&gt; quote line four
+    </pre>
     <form method="post" action="{% url fortune_new %}">
         {% csrf_token %}
         <table>
             {{ form }}
             <tr>
                 <td></td>
-                <td><input type="submit"/></td>
+                <td>
+                    <input type="submit" name="preview" value="{% trans "Preview" %}"/>
+                    <input type="submit" name="save" value="{% trans "Save and publish" %}"/>
+                </td>
             </tr>
         </table>
     </form>
