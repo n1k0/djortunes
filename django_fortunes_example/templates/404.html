@@ -1,1 +1,8 @@
-<h1>Not Found.</h1>
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Page Not Found." %}</h2>
+    <p>{% trans "We were not able to find the resource you were asking for." %}</p>
+{% endblock %}
