@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.conf import settings
 from django.views.generic import date_based, list_detail
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
 from django_fortunes.models import Fortune
 from django_fortunes.forms import PublicFortuneForm
@@ -58,6 +59,7 @@ def fortune_list(request, order_type='latest', author=None, template_name='index
       **kwargs
     )
 
+@login_required
 def fortune_new(request, template_name='new.html'):
     '''
     Provides a Fortune creation form, validates the form and saves

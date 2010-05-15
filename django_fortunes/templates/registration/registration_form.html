@@ -9,39 +9,24 @@
     <p class="errors">{% trans "Please correct the errors below:" %} {{ form.non_field_errors }}</p>
     {% endif %}
 
-    <h1>{% trans "Create an account" %}</h1>
+    <h2>{% trans "Create an account" %}</h2>
+    
+    <p>
+        {% blocktrans %}Creating an account is required in order to contribute quotes on this website.{% endblocktrans %}
+        {% blocktrans %}Fill up the form below to create your account, then  an email will be sent in order to activate it.{% endblocktrans %}
+    </p>
     
     <form method="post" action="" class="wide">
         {% csrf_token %}
-        <p>
-            <label for="id_username">{% trans "Username:" %}</label>
-            {% if form.username.errors %}
-                <p class="errors">{{ form.username.errors.as_text }}</p>
-            {% endif %}
-            {{ form.username }}
-        </p>
-        <p>
-            <label for="id_email">{% trans "Email address:" %}</label>
-            {% if form.email.errors %}
-                <p class="errors">{{ form.email.errors.as_text }}</p>
-            {% endif %}
-            {{ form.email }}
-        </p>
-        <p>
-            <label for="id_password1">{% trans "Password:" %}</label>
-            {% if form.password1.errors %}
-                <p class="errors">{{ form.password1.errors.as_text }}</p>
-            {% endif %}
-            {{ form.password1 }}
-        </p>
-        <p>
-            <label for="id_password2">{% trans "Password (type again to catch typos):" %}</label>
-            {% if form.password2.errors %}
-                <p class="errors">{{ form.password2.errors.as_text }}</p>
-            {% endif %}
-            {{ form.password2 }}
-        </p>
-        <p class="submit"><input type="submit" value="{% trans "Register" %} &rarr;"></p>
+        <table>
+            {{ form }}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="{% trans "Register" %} &rarr;">
+                </td>
+            </tr>
+        </table>
     </form>
 {% endblock %}
 

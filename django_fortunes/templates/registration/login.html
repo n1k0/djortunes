@@ -5,7 +5,13 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Log in" %}</h1>
+    <h2>{% trans "Log in" %}</h2>
+    
+    <p>
+        {% trans "Please log in using the form below." %}
+        {% url registration_register as register_url %}
+        {% blocktrans %}If you don't have an account yet, feel free to <a href="{{ register_url }}">create one</a>.{% endblocktrans %}
+    </p>
 
     {% if form.errors %}
     <p class="error">{% trans "Please correct the errors below:" %}</p>
@@ -13,25 +19,15 @@
 
     <form method="post" action="?next={{ next|default:"/" }}">
         {% csrf_token %}
-        <dl>
-            <dt>
-                <label for="id_username">{% trans "Username:" %}</label>
-            </dt>
-            <dd>
-                {{ form.username }}
-                {% if form.username.errors %} <span class="error">{{ form.username.errors|join:", " }}</span>{% endif %}
-            </dd>
-            <dt>
-                <label for="id_password">{% trans "Password:" %}</label>
-            </dt>
-            <dd>
-                {{ form.password }}
-                {% if form.password.errors %} <span class="error">{{ form.password.errors|join:", " }}</span>{% endif %}
-            </dd>
-            <dt>
-                <input type="submit" value="{% trans "Log in" %}" />
-            </dt>
-        </dl>
+        <table>
+            {{ form }}
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="{% trans "Log in" %}" />
+                </td>
+            </tr>
+        </table>
     </form>
     {% endblock %}
 
