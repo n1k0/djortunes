@@ -10,6 +10,17 @@
         <link rel="alternate" type="application/rss+xml" name="RSS" href="{% url fortune_feed_latest %}"/> 
     </head>
     <body id="djortunes">
+        <nav>
+            <ul id="user-actions">
+            {% if user.is_authenticated %}
+                <li>{% blocktrans with user.username as username %}Welcome, <strong>{{ username }}</strong>{% endblocktrans %}</li>
+                <li><a href="{% url auth_logout %}">{% trans "Log out" %}</a></li>
+            {% else %}
+                <li><a href="{% url auth_login %}">{% trans "Log in" %}</a></li>
+                <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+            {% endif %}
+            </ul>
+        </nav>
         <header>
             <h1>
                 <a href="{% url fortune_index %}">
