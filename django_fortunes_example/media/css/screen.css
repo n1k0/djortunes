@@ -17,12 +17,15 @@ q {
 ul#user-actions {
   float: right;
   list-style-type: none;
-  margin: .5em 1.5em -1.5em;
+  margin: .5em 2em -1.5em;
   padding: 0;
 }
   ul#user-actions li {
     float: left;
-    padding: 0 1em;
+    padding: 0 .5em;
+  }
+  ul#user-actions li.last {
+    border-left: 2px solid #777;
   }
 h1, h2, h3, h4, h5, h6 {
   font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;

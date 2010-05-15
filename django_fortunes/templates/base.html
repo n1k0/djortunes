@@ -14,10 +14,10 @@
             <ul id="user-actions">
             {% if user.is_authenticated %}
                 <li>{% blocktrans with user.username as username %}Welcome, <strong>{{ username }}</strong>{% endblocktrans %}</li>
-                <li><a href="{% url auth_logout %}">{% trans "Log out" %}</a></li>
+                <li class="last"><a href="{% url auth_logout %}">{% trans "Log out" %}</a></li>
             {% else %}
                 <li><a href="{% url auth_login %}">{% trans "Log in" %}</a></li>
-                <li><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+                <li class="last"><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
             {% endif %}
             </ul>
         </nav>
@@ -53,7 +53,7 @@
                     <h2>{% trans "About" %}</h2>
                     <p>
                         {% url registration_register as register_url %}
-                        {% blocktrans %}Fortunes is a repository of quotes. You can <a href="{{ register_url }}">create an account</a> to add your own, or <a href="github.com/n1k0/djortunes">get the source</a> to install it on your own server.{% endblocktrans %}
+                        {% blocktrans %}Fortunes is a repository of quotes. You can <a href="{{ register_url }}">create an account</a> to add your own, or <a href="http://github.com/n1k0/djortunes">get the source</a> to install it on your own server.{% endblocktrans %}
                     </p>
                     {% endblock about %}
                     {% block contributors %}

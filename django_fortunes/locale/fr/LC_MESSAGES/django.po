@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-01 18:51+0200\n"
+"POT-Creation-Date: 2010-05-15 20:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,78 +17,205 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: models.py:12
+#: models.py:15
 msgid "slug"
 msgstr "slug"
 
-#: models.py:14
+#: models.py:17
 msgid "published date"
 msgstr "date de publication"
 
-#: models.py:20
+#: models.py:28
 #, python-format
 msgid "%(title)s, from %(author)s"
 msgstr "%(title)s, par %(author)s"
+
+#: templates/base.html:7 templates/base.html.py:27
+#, fuzzy
+msgid "Fortunes"
+msgstr "la liste des Fortunes"
+
+#: templates/base.html:16
+#, python-format
+msgid "Welcome, <strong>%(username)s</strong>"
+msgstr "Bonjour, <strong>%(username)s</strong>"
+
+#: templates/base.html:17
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: templates/base.html:19 templates/registration/login.html:5
+#: templates/registration/login.html:8 templates/registration/login.html:27
+msgid "Log in"
+msgstr "Connexion"
+
+#: templates/base.html:20 templates/registration/registration_form.html:26
+msgid "Register"
+msgstr "Créer un compte"
+
+#: templates/base.html:32
+msgid "When it's funny, it's quoted™"
+msgstr "Quand c'est drôle, c'est consigné™"
+
+#: templates/base.html:53
+msgid "About"
+msgstr "À propos"
+
+#: templates/base.html:56
+#, python-format
+msgid ""
+"Fortunes is a repository of quotes. You can <a href=\"%(register_url)s"
+"\">create an account</a> to add your own, or <a href=\"http://github.com/"
+"n1k0/djortunes\">get the source</a> to install it on your own server."
+msgstr ""
+"Fortunes est un dépôt de citations. Vous pouvez <a href=\"%(register_url)s"
+"\">créer un compte</a> pour ajouter les vôtres, ou <a href=\"http://github."
+"com/n1k0/djortunes\">récupérer le code</a> pour installer l'application sur "
+"votre propre serveur."
+
+#: templates/base.html:70
+msgid "Powered by"
+msgstr "Propulsé par"
+
+#: templates/base.html:71 templates/base.html.py:72
+msgid "and"
+msgstr "et"
+
+#: templates/base.html:72
+msgid "baked by"
+msgstr "conçu par"
+
+#: templates/base.html:73
+msgid "originaly inspired by"
+msgstr "d'après"
+
+#: templates/base.html:74
+msgid "by"
+msgstr "par"
 
 #: templates/detail.html:14
 msgid "Comments"
 msgstr "Commentaires"
 
 #: templates/detail.html:23
+msgid "Comment permalink"
+msgstr "Lien permanent vers le commentaire"
+
+#: templates/detail.html:24
 #, python-format
 msgid "Posted by %(user_name)s %(submit_date)s ago"
 msgstr "Posté par %(user_name)s il y a %(submit_date)s"
 
-#: templates/detail.html:28
+#: templates/detail.html:29
 msgid "No comment yet"
 msgstr "Aucun commentaire"
 
-#: templates/detail.html:41
+#: templates/detail.html:36
+#, fuzzy
+msgid "Add a comment"
+msgstr "Ajouter une fortune"
+
+#: templates/detail.html:45
 msgid "Submit"
 msgstr "Envoyer"
 
-#: templates/detail.html:51
+#: templates/detail.html:55
 msgid "Back to"
 msgstr "Retour à"
 
-#: templates/detail.html:51 templates/index.html:4
+#: templates/detail.html:55
 msgid "Fortunes list"
 msgstr "la liste des Fortunes"
 
-#: templates/detail.html:52
+#: templates/detail.html:56
 msgid "Add a new fortune"
 msgstr "Ajouter une fortune"
 
-#: templates/index.html:15
+#: templates/index.html:7
+#, fuzzy
+msgid "Top Fortunes"
+msgstr "Les meilleures"
+
+#: templates/index.html:10
+msgid "Worst Fortunes"
+msgstr "Les pires"
+
+#: templates/index.html:12
+msgid "Latest Fortunes"
+msgstr "Les dernières"
+
+#: templates/index.html:26
 msgid "No fortune found mathing your request."
 msgstr "Aucune fortune trouvée correspondant à votre requête."
 
-#: templates/index.html:24
+#: templates/index.html:35
 msgid "previous"
 msgstr "précédente"
 
-#: templates/index.html:28
+#: templates/index.html:39
 #, python-format
 msgid "Page %(current_page)s of %(num_pages)s."
 msgstr "Page %(current_page)s sur %(num_pages)s."
 
-#: templates/index.html:32
+#: templates/index.html:43
 msgid "next"
 msgstr "suivante"
 
-#: templates/new.html:5
+#: templates/new.html:5 templates/new.html.py:8
 msgid "Add a fortune"
 msgstr "Ajouter une fortune"
+
+#: templates/new.html:10
+msgid "Add a quote using the form below, following this specific syntax:"
+msgstr "Ajoutez une citation en utilisant le formulaire ci-dessous et en respectant la syntaxe définie ci-après :"
+
+#: templates/new.html:22
+msgid "Author:"
+msgstr "Autheur :"
+
+#: templates/new.html:29
+msgid "Preview"
+msgstr "Prévisualiser"
+
+#: templates/new.html:30
+msgid "Save and publish"
+msgstr "Sauver et publier"
 
 #: templates/partials/fortune.html:13
 #, python-format
 msgid "Posted by <strong>%(author)s</strong> %(pub_date)s ago."
 msgstr "Posté par <strong>%(author)s</strong> il y a %(pub_date)s."
 
-#: templates/partials/fortune.html:15
+#: templates/partials/fortune.html:17
+msgid "No vote"
+msgstr "Aucun vote"
+
+#: templates/partials/fortune.html:19
 #, python-format
-msgid "%(votes)s votes"
-msgstr "%(votes)s votes"
+msgid "One vote"
+msgid_plural "%(votes)s votes"
+msgstr[0] "%(votes)s votes"
+msgstr[1] "%(votes)s votes"
+
+#: templates/partials/fortune.html:22
+msgid "Vote down this fortune"
+msgstr "Moinsser cette fortune"
+
+#: templates/partials/fortune.html:23
+msgid "Vote up this fortune"
+msgstr "Plusser cette fortune"
+
+#: templates/partials/fortune.html:29
+#, fuzzy
+msgid "No comment"
+msgstr "Aucun commentaire"
+
+#: templates/partials/fortune.html:31
+#, python-format
+msgid "%(comment_count)s comment"
+msgid_plural "%(comment_count)s comments"
+msgstr[0] "%(comment_count)s commentaires"
+msgstr[1] "%(comment_count)s commentaires"
 
 #: templates/partials/navigation.html:6
 msgid "Latest"
@@ -129,3 +256,119 @@ msgstr "Meilleurs contributeurs"
 #: templates/partials/topcontributors.html:15
 msgid "No author yet"
 msgstr "Pas de contributeurs"
+
+#: templates/registration/activate.html:5
+msgid "Account activated"
+msgstr "Compte activé"
+
+#: templates/registration/activate.html:8
+msgid "Account activated."
+msgstr "Compte activé."
+
+#: templates/registration/activate.html:11
+msgid "Thanks for signing up!"
+msgstr "Merci de vous être inscrit !"
+
+#: templates/registration/activate.html:12
+msgid "Now you can <a href=\"/accounts/login/\">log in</a>."
+msgstr "Vous pouvez maintenant <a href=\"/accounts/login/\">vous connecter</a>."
+
+#: templates/registration/activate.html:16
+#, python-format
+msgid ""
+"\n"
+"            Sorry, it didn't work. Either your activation link was "
+"incorrect, or\n"
+"            the activation key for your account has expired; activation keys "
+"are\n"
+"            only valid for %(expiration_days)s days after\n"
+"            registration.\n"
+"        "
+msgstr ""
+
+#: templates/registration/login.html:11
+msgid "Please log in using the form below."
+msgstr ""
+
+#: templates/registration/login.html:13
+#, python-format
+msgid ""
+"If you don't have an account yet, feel free to <a href=\"%(register_url)s"
+"\">create one</a>."
+msgstr ""
+
+#: templates/registration/login.html:17
+#: templates/registration/registration_form.html:9
+msgid "Please correct the errors below:"
+msgstr ""
+
+#: templates/registration/login.html:36
+msgid ""
+"If you don't have an account, you can <a href=\"/accounts/register/\">sign "
+"up</a> for one."
+msgstr ""
+
+#: templates/registration/logout.html:5
+msgid "Logged out"
+msgstr ""
+
+#: templates/registration/logout.html:8
+msgid "You've been logged out."
+msgstr ""
+
+#: templates/registration/logout.html:10
+#, python-format
+msgid ""
+"Thanks for stopping by; when you come back, don't forget to <a href=\"%"
+"(login_url)s\">log in</a> again."
+msgstr ""
+
+#: templates/registration/registration_complete.html:5
+msgid "Registration complete"
+msgstr ""
+
+#: templates/registration/registration_complete.html:8
+msgid "Check your email"
+msgstr ""
+
+#: templates/registration/registration_complete.html:9
+msgid ""
+"An activation link has been sent to the email address you supplied, along "
+"with instructions for activating your account."
+msgstr ""
+
+#: templates/registration/registration_form.html:5
+msgid "Sign up"
+msgstr ""
+
+#: templates/registration/registration_form.html:12
+msgid "Create an account"
+msgstr ""
+
+#: templates/registration/registration_form.html:15
+msgid ""
+"Creating an account is required in order to contribute quotes on this "
+"website."
+msgstr ""
+
+#: templates/registration/registration_form.html:16
+msgid ""
+"Fill up the form below to create your account, then  an email will be sent "
+"in order to activate it."
+msgstr ""
+
+#: templates/registration/registration_form.html:34
+msgid ""
+"Fill out the form to the left (all fields are required), and your\n"
+"account will be created; you'll be sent an email with instructions on how\n"
+"to finish your registration."
+msgstr ""
+
+#: templates/registration/registration_form.html:38
+msgid ""
+"We'll only use your email to send you signup instructions. We hate spam\n"
+"as much as you do."
+msgstr ""
+
+#~ msgid "%(votes)s votes"
+#~ msgstr "%(votes)s votes"

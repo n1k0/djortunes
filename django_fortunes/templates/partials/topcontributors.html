@@ -5,8 +5,8 @@
     <ol>
         {% for author in authors %}
         <li>
-            <a href="{% url fortune_index_author author.author %}">
-                {{ author.author }}
+            <a href="{% url fortune_index_author author.author__username %}">
+                {{ author.author__username }}
             </a> ({{ author.nb }})
         </li>
         {% endfor %}

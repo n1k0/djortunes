@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.comments.models import Comment
 from django.utils.translation import ugettext_lazy as _
@@ -9,7 +10,7 @@ from django.template.defaultfilters import slugify
 from django_fortunes.managers import FortuneManager
 
 class Fortune(models.Model):
-    author = models.CharField(max_length=45, blank=False)
+    author = models.ForeignKey(User)
     title = models.CharField(max_length=200, blank=False)
     slug = models.SlugField(_('slug'), db_index=True, max_length=255, unique_for_date='pub_date')
     content = models.TextField(blank=False)
@@ -26,7 +27,7 @@ class Fortune(models.Model):
     def __unicode__(self):
         return _("%(title)s, from %(author)s") % {
             'title': self.title,
-            'author': self.author ,
+            'author': self.author.username ,
         }
 
     def check_slug(self):

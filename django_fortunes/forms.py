@@ -7,4 +7,4 @@ class FortuneForm(ModelForm):
 
 class PublicFortuneForm(FortuneForm):
     class Meta(FortuneForm.Meta):
-        exclude = ('pub_date', 'votes', 'slug',)
+        exclude = ('author', 'pub_date', 'votes', 'slug',)
