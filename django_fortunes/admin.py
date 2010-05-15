@@ -4,7 +4,7 @@ from django.contrib import admin
 class FortuneAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'content', 'votes')
+            'fields': ('author', 'title', 'slug', 'content', 'votes')
         }),
         ('Advanced options', {
             'classes': ('collapse',),
