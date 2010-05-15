@@ -5,10 +5,11 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^comments/', include('django.contrib.comments.urls')),
     (r'', include('django_fortunes.urls')),
+    (r'^accounts/', include('registration.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^comments/', include('django.contrib.comments.urls')),
 )
 
 if settings.DEBUG:

@@ -12,12 +12,22 @@ If you're curious enough, you might check out the [Symfony version of this app](
 Prerequisites
 -------------
 
-Django 1.2-DEV or more recent
+* Django 1.2-DEV or more recent
+* `django-registration` 0.7
 
 Installation
 ------------
 
-For the moment Djortunes is proposed as a standalone Django project; as soon as possible, it will ship as a standalone application.
+Djortunes ship as a standalone application (located in the `django_fortunes` directory), and a sample Django project is also provided as an example of use (in the `django_fortunes_example` directory).
+
+The better way to install dependencies (using a `virtualenv` is highly encouraged) is by using the provided `pip` requirements file:
+
+    $ pip install -r requirements.txt
+
+Then, just run the `./manage.py runserver` within the `django_fortunes_example` directory:
+
+    $ cd django_fortunes_example
+    $ ./manage.py runserver
 
 Configuration
 -------------
@@ -38,5 +48,5 @@ This work is released under the terms of the [MIT license](http://en.wikipedia.o
 Authors
 -------
 
- * [Nicolas Perriault](http://github.com/n1k0)
- * [Florent Messa](http://github.com/thoas)
+* [Nicolas Perriault](http://github.com/n1k0)
+* [Florent Messa](http://github.com/thoas)
