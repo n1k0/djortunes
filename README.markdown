@@ -12,8 +12,9 @@ If you're curious enough, you might check out the [Symfony version of this app](
 Prerequisites
 -------------
 
-* Django 1.2-DEV or more recent
+* Django 1.2 or more recent
 * `django-registration` 0.7
+* Eventually, the `django-debug-toolbar`
 
 Installation
 ------------

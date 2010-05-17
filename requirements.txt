@@ -1,4 +1,4 @@
--e git+http://github.com/django/django.git@394c068d03baa437ba0d5a025bb7f5e4116cf143#egg=Django-1.2_beta_1-py2.6-dev
--e git+http://github.com/robhudson/django-debug-toolbar.git@7ba80e06bc6302593d77be6be3242e37b071a46b#egg=django_debug_toolbar-0.8.3
+Django==1.2
+django-debug-toolbar==0.8.3
 django-registration==0.7
 wsgiref==0.1.2
