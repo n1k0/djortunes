@@ -1,1 +1,1 @@
-__all__ = ('managers', 'models', 'templatetags', 'utils')  
+__all__ = ('managers', 'models', 'templatetags', 'utils', 'functional')
