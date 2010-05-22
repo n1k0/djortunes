@@ -12,8 +12,8 @@ class FortuneExtraTest(TestCase):
     def test_top_contributors(self):
         authors = top_contributors()['authors'];
         self.assertEquals(len(authors), 2)
-        self.assertEquals(authors[0]['author'], u'NiKo')
+        self.assertEquals(authors[0]['author__username'], u'NiKo')
         self.assertEquals(authors[0]['nb'], 2)
-        self.assertEquals(authors[1]['author'], u'Dude')
+        self.assertEquals(authors[1]['author__username'], u'Dude')
         self.assertEquals(authors[1]['nb'], 1)
         

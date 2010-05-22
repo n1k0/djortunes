@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.conf import settings
 from django.views.generic import date_based, list_detail
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 
 from django_fortunes.models import Fortune
 from django_fortunes.forms import PublicFortuneForm
@@ -64,15 +65,18 @@ def fortune_list(request, order_type='latest', author=None, template_name='index
       **kwargs
     )
 
+@login_required
 def fortune_new(request, template_name='new.html'):
     '''
-    Provides a Fortune creation form, validates the form and saves
-    a new Fortune in the database
+    Provides a Fortune creation form, validates the form if values posted 
+    and saves a new Fortune in the database if everything's okay
     '''
     if request.method == 'POST':
         form = PublicFortuneForm(request.POST)
         if form.is_valid():
-            fortune = form.save()
+            fortune = form.save(commit=False)
+            fortune.author = request.user
+            fortune.save()
             return redirect(fortune)
     else:
         form = PublicFortuneForm()
@@ -82,7 +86,7 @@ def fortune_new(request, template_name='new.html'):
 
 def fortune_vote(request, object_pk, direction):
     '''
-    Votes for a fortune
+    Votes up or down a fortune
     '''
     fortune = get_object_or_404(Fortune, pk=object_pk)
     fortune.votes += 1 if direction == 'up' else -1

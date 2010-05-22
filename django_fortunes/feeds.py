@@ -1,5 +1,6 @@
-from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
+from django.contrib.syndication.views import Feed
 from django.contrib.sites.models import Site
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -39,11 +40,9 @@ class LatestFortunes(FortuneFeed):
         return reverse('fortune_index_type', kwargs={'order_type': 'latest'})
 
 class LatestFortunesByAuthor(FortuneFeed):
-    def get_object(self, bits):
+    def get_object(self, request, username):
         ''' Retrieve simple param in url, waiting for authenticated user '''
-        if len(bits) != 1:
-            raise ObjectDoesNotExist
-        return bits[0]
+        return get_object_or_404(User, username=username)
 
     def title(self, obj):
         return "Latest fortunes by %s" % obj
@@ -57,4 +56,4 @@ class LatestFortunesByAuthor(FortuneFeed):
         return "Latest fortunes added by %s." % obj
 
     def items(self, obj):
-        return self.manager.latest_by_author(obj)[:getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5)]
+        return obj.fortune_set.all()[:getattr(settings, 'FORTUNES_MAX_PER_PAGE', 5)]

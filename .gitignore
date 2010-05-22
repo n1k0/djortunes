@@ -1,4 +1,5 @@
 db.sqlite
+django_fortunes_example/settings_local.py
 djortunes.tmproj
 docs/_build/*
 *.pyc

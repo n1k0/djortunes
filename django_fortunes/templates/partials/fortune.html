@@ -1,4 +1,4 @@
-{% load fortune_extras i18n %}
+{% load fortune_extras i18n comments %}
 
 <article class="fortune" id="fortune_{{ fortune.pk }}">
     <h2>
@@ -10,12 +10,28 @@
     </blockquote>
     <aside>
         <p class="fortune-infos">
-            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <strong>{{ author }}</strong> {{ pub_date }} ago.{% endblocktrans %}
+            {% url fortune_index_author fortune.author as author_link %}
+            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <a href="{{ author_link }}" title="Link to {{ author }}'s fortunes"><strong>{{ author }}</strong></a> {{ pub_date }} ago.{% endblocktrans %} |
             <span class="fortune-actions">
-                <strong>{% blocktrans with fortune.votes as votes %}{{ votes }} votes{% endblocktrans %}</strong>
-                <a href="{% url fortune_vote fortune.pk "down" %}" title="Vote down this fortune">-</a> / 
-                <a href="{% url fortune_vote fortune.pk "up" %}" title="Vote up this fortune">+</a> 
+                <strong>
+                    {% if fortune.votes == 0 %}
+                    {% trans "No vote" %}
+                    {% else %}
+                    {% blocktrans count fortune.votes as votes %}One vote{% plural %}{{ votes }} votes{% endblocktrans %}
+                    {% endif %}
+                </strong>
+                <a href="{% url fortune_vote fortune.pk "down" %}" title="{% trans "Vote down this fortune" %}">-</a> / 
+                <a href="{% url fortune_vote fortune.pk "up" %}" title="{% trans "Vote up this fortune" %}">+</a> 
             </span>
+            {% get_comment_count for fortune as comment_count %}
+            |
+            <a href="{{ fortune.get_absolute_url }}#comments">
+                {% if comment_count == 0 %}
+                {% trans "No comment" %}
+                {% else %}
+                {% blocktrans count comment_count as comment_count %}{{ comment_count }} comment{% plural %}{{ comment_count }} comments{% endblocktrans %}
+                {% endif %}
+            </a>
         </p>
     </aside>
 </article>

@@ -1,84 +1,122 @@
-[{
+[
+  {
+    "pk": 9999,
+    "model": "auth.user",
+    "fields": {
+      "username": "NiKo",
+      "first_name": "Nicolas",
+      "last_name": "Perriault",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2010-05-15 00:00:00",
+      "groups": [],
+      "user_permissions": [],
+      "password": "sha1$0ee01$85f5c185e11a8d2d0514e3ae0b0288b3ece5328f",
+      "email": "nperriault@gmail.com",
+      "date_joined": "2010-05-15 00:00:00"
+    }
+  },
+  {
+    "pk": 10000,
+    "model": "auth.user",
+    "fields": {
+      "username": "Dude",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2010-05-14 00:00:00",
+      "groups": [],
+      "user_permissions": [],
+      "password": "sha1$0ee01$85f5c185e11a8d2d0514e3ae0b0288b3ece5328f",
+      "email": "dude@gmail.com",
+      "date_joined": "2010-05-10 10:00:00"
+    }
+  },
+  {
     "pk": 1,
     "model": "django_fortunes.fortune",
     "fields": {
-        "content": "<niko> Yeah\r\n<dude> Sure",
-        "votes": 0,
-        "title": "My first fortune",
-        "slug": "my-first-fortune",
-        "pub_date": "2009-11-03 09:30:07",
-        "author": "NiKo"
+      "content": "<niko> Yeah\r\n<dude> Sure",
+      "votes": 2,
+      "title": "My first fortune",
+      "slug": "my-first-fortune",
+      "pub_date": "2010-01-01 00:00:00",
+      "author": 9999
     }
-},
-{
+  },
+  {
     "pk": 2,
     "model": "django_fortunes.fortune",
     "fields": {
-        "content": "<dude> Wow\r\n<niko> Sure",
-        "votes": 0,
-        "title": "Another One",
-        "slug": "another-one",
-        "pub_date": "2009-11-03 09:30:29",
-        "author": "Dude"
+      "content": "<dude> Wow\r\n<niko> Sure",
+      "votes": 1,
+      "title": "Another One",
+      "slug": "another-one",
+      "pub_date": "2010-03-01 00:00:00",
+      "author": 10000
     }
-},
-{
+  },
+  {
     "pk": 3,
     "model": "django_fortunes.fortune",
     "fields": {
-        "content": "<john> boo!\n<bob> wow.",
-        "votes": 0,
-        "title": "A funny one",
-        "slug": "a-funny-one",
-        "pub_date": "2009-12-03 20:33:12",
-        "author": "NiKo"
+      "content": "<john> boo!\n<bob> wow.",
+      "votes": 3,
+      "title": "A funny one",
+      "slug": "a-funny-one",
+      "pub_date": "2010-02-01 00:00:00",
+      "author": 9999
     }
-},
-{
+  },
+  {
     "pk": 1,
     "model": "comments.comment",
     "fields": {
-        "comment": "You're right, man",
-        "submit_date": "2009-11-03 09:30:48",
-        "user_name": "Dude",
-        "ip_address": "127.0.0.1", 
-        "object_pk": "1", 
-        "site": 1, 
-        "is_removed": false, 
-        "user": null, 
-        "content_type": 11, 
-        "is_public": true, 
-        "user_name": "test", 
-        "user_email": "dude@gmail.com"
+      "comment": "You're right, man",
+      "submit_date": "2009-11-03 09:30:48",
+      "user_name": "Dude",
+      "ip_address": "127.0.0.1", 
+      "object_pk": "1", 
+      "site": 1, 
+      "is_removed": false, 
+      "user": null, 
+      "content_type": 11, 
+      "is_public": true, 
+      "user_name": "test", 
+      "user_email": "dude@gmail.com"
     }
-},
-{
+  },
+  {
     "pk": 2,
     "model": "comments.comment",
     "fields": {
-        "comment": "I know",
-        "submit_date": "2009-11-03 09:31:03",
-        "ip_address": "127.0.0.1", 
-        "object_pk": "1", 
-        "site": 1, 
-        "is_removed": false, 
-        "user": null, 
-        "content_type": 11,
-        "user_name": "NiKo"
+      "comment": "I know",
+      "submit_date": "2009-11-03 09:31:03",
+      "ip_address": "127.0.0.1", 
+      "object_pk": "1", 
+      "site": 1, 
+      "is_removed": false, 
+      "user": null, 
+      "content_type": 11,
+      "user_name": "NiKo"
     }
-},
-{
+  },
+  {
     "pk": 3,
     "model": "comments.comment",
     "fields": {
-        "comment": "Interesting.",
-        "submit_date": "2009-11-03 09:31:14",
-        "ip_address": "127.0.0.1", 
-        "object_pk": "2", 
-        "site": 1, 
-        "is_removed": false, 
-        "user": null, 
-        "content_type": 11,
-        "user_name": "NiKo"
+      "comment": "Interesting.",
+      "submit_date": "2009-11-03 09:31:14",
+      "ip_address": "127.0.0.1", 
+      "object_pk": "2", 
+      "site": 1, 
+      "is_removed": false, 
+      "user": null, 
+      "content_type": 11,
+      "user_name": "NiKo"
     }
-}]
+  }
+]

@@ -1,18 +1,29 @@
-{% load fortune_extras i18n %}
+{% load i18n fortune_extras %}
 
 <!DOCTYPE html>
 <html class="djortunes">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <title>{% block title %}{% endblock %} - Djortunes</title>
+        <title>{% block title %}{% trans "Fortunes" %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/screen.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/Andika-Basic-fontfacekit/stylesheet.css" />
-        <link rel="alternate" type="application/rss+xml" name="RSS" href="/feeds/latest/"/> 
+        <link rel="alternate" type="application/rss+xml" name="RSS" href="{% url feed_latest_fortunes %}"/> 
         {% block extra_head %}
             
         {% endblock %}
     </head>
     <body id="djortunes">
+        <nav>
+            <ul id="user-actions">
+            {% if user.is_authenticated %}
+                <li>{% blocktrans with user.username as username %}Welcome, <strong>{{ username }}</strong>{% endblocktrans %}</li>
+                <li class="last"><a href="{% url auth_logout %}">{% trans "Log out" %}</a></li>
+            {% else %}
+                <li><a href="{% url auth_login %}">{% trans "Log in" %}</a></li>
+                <li class="last"><a href="{% url registration_register %}">{% trans "Register" %}</a></li>
+            {% endif %}
+            </ul>
+        </nav>
         <header>
             <h1>
                 <a href="{% url fortune_index %}">
@@ -44,7 +55,8 @@
                     {% block about %}
                     <h2>{% trans "About" %}</h2>
                     <p>
-                        {% blocktrans %}Fortunes is a repository of quotes. You can create an account to add your own, or get the source to install it on your own server.{% endblocktrans %}
+                        {% url registration_register as register_url %}
+                        {% blocktrans %}Fortunes is a repository of quotes. You can <a href="{{ register_url }}">create an account</a> to add your own, or <a href="http://github.com/n1k0/djortunes">get the source</a> to install it on your own server.{% endblocktrans %}
                     </p>
                     {% endblock about %}
                     {% block contributors %}
@@ -60,7 +72,7 @@
                 <small>
                     {% trans "Powered by" %} <a href="http://www.djangoproject.com/">Django</a> 
                     {% trans "and" %} <a href="http://github.com/n1k0/djortunes">djortunes</a>, 
-                    {% trans "baked by" %} <a href="http://prendreuncafe.com/">NiKo</a> and 
+                    {% trans "baked by" %} <a href="http://prendreuncafe.com/">NiKo</a> {% trans "and" %} 
                     {% trans "originaly inspired by" %} <a href="http://fortunes.inertie.org/">fortunes</a>, 
                     {% trans "by" %} <em>Maurice Svay</em>.
                 </small>
