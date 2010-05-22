@@ -34,9 +34,13 @@ def fortune_list(request, order_type='latest', author=None, template_name='index
     '''
     Lists Fortunes
     '''
+    
+    extra = {}
+    
     # Filtering
     if author:
         queryset = Fortune.objects.latest_by_author(author)
+        extra['author'] = author
     else:
         queryset = Fortune.objects.latest()
     
@@ -49,13 +53,15 @@ def fortune_list(request, order_type='latest', author=None, template_name='index
         # latest
         queryset = queryset.order_by('-pub_date')
     
+    extra['order_type'] = order_type
+    
     return list_detail.object_list(
       request,
       queryset = queryset,
       paginate_by = getattr(settings, 'FORTUNES_MAX_PER_PAGE', 3),
       template_name = template_name,
       template_object_name = template_object_name,
-      extra_context = {'order_type': order_type},
+      extra_context = extra,
       **kwargs
     )
 

@@ -10,7 +10,8 @@
     </blockquote>
     <aside>
         <p class="fortune-infos">
-            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <strong>{{ author }}</strong> {{ pub_date }} ago.{% endblocktrans %} |
+            {% url fortune_index_author fortune.author as author_link %}
+            {% blocktrans with fortune.author as author and fortune.pub_date|timesince as pub_date %}Posted by <a href="{{ author_link }}" title="Link to {{ author }}'s fortunes"><strong>{{ author }}</strong></a> {{ pub_date }} ago.{% endblocktrans %} |
             <span class="fortune-actions">
                 <strong>
                     {% if fortune.votes == 0 %}

@@ -5,11 +5,6 @@ from django_fortunes.feeds import LatestFortunes, LatestFortunesByAuthor
 from django_fortunes.views import fortune_list, fortune_detail, \
                                   fortune_vote, fortune_new
 
-feeds = {
-    'latest': LatestFortunes,
-    'author': LatestFortunesByAuthor,
-}
-
 urlpatterns = patterns('',
     url(r'^$',
         fortune_list,
@@ -35,11 +30,11 @@ urlpatterns = patterns('',
         fortune_vote,
         name='fortune_vote'),
     
-    url(r'^feeds/latest/$', 
-        LatestFortunes(), 
-        name='fortune_feed_latest'),
+    url(r'^feed/latest/$',
+        LatestFortunes(),
+        name='feed_latest_fortunes'),
     
-    url(r'^feeds/author/(?P<author>\w+)/$', 
-        LatestFortunesByAuthor(), 
-        name='fortune_feed_author'),
+    url(r'^feed/author/(?P<username>\w+)/$',
+        LatestFortunesByAuthor(),
+        name='feed_fortunes_by_author'),
 )

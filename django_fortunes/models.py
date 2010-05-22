@@ -41,7 +41,7 @@ class Fortune(models.Model):
             while True:
                 self.slug = prefix + slugify(self.title)
                 try:
-                    Fortune.objects.values('id').get(slug=self.slug)
+                    self.objects.values('id').get(slug=self.slug)
                     i += 1
                     prefix = str(i) + "-"
                 except Fortune.DoesNotExist:
