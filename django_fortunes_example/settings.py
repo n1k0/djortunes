@@ -97,7 +97,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'registration',
-    'django_fortunes_example.django_fortunes',
+    'django_fortunes',
 )
 
 # Django-registration settings
