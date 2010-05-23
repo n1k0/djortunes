@@ -14,7 +14,7 @@ Prerequisites
 
 * Django 1.2 or more recent
 * `django-registration` 0.7
-* Eventually, the `django-debug-toolbar`
+* Eventually, the `django-debug-toolbar` if you plan to use the provided sample `settings_local.py.sample` file for a standard dev environment
 
 Installation
 ------------
@@ -25,10 +25,12 @@ The better way to install dependencies (using a `virtualenv` is highly encourage
 
     $ pip install -r requirements.txt
 
+You can adjust and override the project settings by configuring a custom settings file: a sample `settings_local.py.sample` file is provided within the example project directory. You can safely rename it `settings_local.py` and tweak its values.
+
 Then, just run the `./manage.py runserver` within the `django_fortunes_example` directory:
 
     $ cd django_fortunes_example
-    $ ./manage.py runserver
+    $ ./manage.py runserver --settings=settings_local
 
 Configuration
 -------------
